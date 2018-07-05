@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+- phpMyAdmin XML Dump
+- version 4.7.4
+- https://www.phpmyadmin.net
+-
+- Host: 127.0.0.1
+- Generation Time: Jul 05, 2018 at 02:37 PM
+- Server version: 10.1.26-MariaDB
+- PHP Version: 7.1.9
+-->
+
+<pma_xml_export version="1.0" xmlns:pma="https://www.phpmyadmin.net/some_doc_url/">
+    <!--
+    - Structure schemas
+    -->
+    <pma:structure_schemas>
+        <pma:database name="qms change requests" collation="latin1_swedish_ci" charset="latin1">
+            <pma:table name="employee_details">
+                CREATE TABLE `employee_details` (
+                  `ID` int(11) NOT NULL AUTO_INCREMENT,
+                  `Emp_Id` text NOT NULL,
+                  `Emp_Password` text NOT NULL,
+                  `Name` text NOT NULL,
+                  `Designation` text NOT NULL,
+                  `Email_Id` text NOT NULL,
+                  `Team` text NOT NULL,
+                  `Access` text NOT NULL,
+                  PRIMARY KEY (`ID`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="qms cr table">
+                CREATE TABLE `qms cr table` (
+                  `ID` int(11) NOT NULL AUTO_INCREMENT,
+                  `RequestType` text NOT NULL,
+                  `ChangeRequestID` text NOT NULL,
+                  `Requestor` text NOT NULL,
+                  `RequestedFilePath` text NOT NULL,
+                  `CRDescription` text NOT NULL,
+                  `ImpactedFiles` text NOT NULL,
+                  `RequestedDate` text NOT NULL,
+                  `CCB Status` text NOT NULL,
+                  `CCB Remarks` text NOT NULL,
+                  `SME Approver` text NOT NULL,
+                  `Quality Approver` text NOT NULL,
+                  `Other Approvers` text NOT NULL,
+                  `CRStatus` text NOT NULL,
+                  `InitialDocVersion` text NOT NULL,
+                  `Impacted Files Version` text NOT NULL,
+                  `NewDocID` text NOT NULL,
+                  `RejectReason` text NOT NULL,
+                  `Reviewer` text NOT NULL,
+                  `Review Completion Date` text NOT NULL,
+                  `Approver` text NOT NULL,
+                  `Document Approval Date` text NOT NULL,
+                  `FinalDocVersion` text NOT NULL,
+                  `Impacted Files Final Version` text NOT NULL,
+                  `CR Closed Date` text NOT NULL,
+                  PRIMARY KEY (`ID`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+            </pma:table>
+        </pma:database>
+    </pma:structure_schemas>
+
+    <!--
+    - Database: 'qms change requests'
+    -->
+    <database name="qms change requests">
+        <!-- Table employee_details -->
+        <table name="employee_details">
+            <column name="ID">1</column>
+            <column name="Emp_Id">37075</column>
+            <column name="Emp_Password">123</column>
+            <column name="Name">Vadivel Manickam</column>
+            <column name="Designation">Manager</column>
+            <column name="Email_Id">Vadivel.Manickam@esterline.com</column>
+            <column name="Team">ECCS</column>
+            <column name="Access">1</column>
+        </table>
+        <table name="employee_details">
+            <column name="ID">2</column>
+            <column name="Emp_Id">48675</column>
+            <column name="Emp_Password">456</column>
+            <column name="Name">Mohan Kanathur Shivanna</column>
+            <column name="Designation">Author/ Reviewer</column>
+            <column name="Email_Id">Mohan.ks@esterline.com</column>
+            <column name="Team">ECCS</column>
+            <column name="Access">5</column>
+        </table>
+        <table name="employee_details">
+            <column name="ID">3</column>
+            <column name="Emp_Id">48989</column>
+            <column name="Emp_Password">password</column>
+            <column name="Name">Aswini Sirela</column>
+            <column name="Designation">Author/ Reviewer</column>
+            <column name="Email_Id">Aswini.Sirela@esterline.com</column>
+            <column name="Team">ECCS</column>
+            <column name="Access">5</column>
+        </table>
+        <table name="employee_details">
+            <column name="ID">4</column>
+            <column name="Emp_Id">46839</column>
+            <column name="Emp_Password">password</column>
+            <column name="Name">Kiran Hatti</column>
+            <column name="Designation">Author/ Reviewer</column>
+            <column name="Email_Id">kiran.hatti@esterline.com</column>
+            <column name="Team">ECCS</column>
+            <column name="Access">5</column>
+        </table>
+        <table name="employee_details">
+            <column name="ID">5</column>
+            <column name="Emp_Id">52471</column>
+            <column name="Emp_Password">password</column>
+            <column name="Name">Appasaheb Birajdar</column>
+            <column name="Designation">Illustrator / Reviewer</column>
+            <column name="Email_Id">qwe</column>
+            <column name="Team">ECCS</column>
+            <column name="Access">6</column>
+        </table>
+        <table name="employee_details">
+            <column name="ID">6</column>
+            <column name="Emp_Id">52253</column>
+            <column name="Emp_Password">password</column>
+            <column name="Name">Nikhil Manikandan</column>
+            <column name="Designation">Author/ Reviewer</column>
+            <column name="Email_Id">qwe</column>
+            <column name="Team">ECCS</column>
+            <column name="Access">5</column>
+        </table>
+        <table name="employee_details">
+            <column name="ID">7</column>
+            <column name="Emp_Id">47532</column>
+            <column name="Emp_Password">password</column>
+            <column name="Name">Pavan Kumar Chimbili</column>
+            <column name="Designation">Author/ Reviewer</column>
+            <column name="Email_Id">pavan.chimbili@esterline.com</column>
+            <column name="Team">ECCS</column>
+            <column name="Access">5</column>
+        </table>
+        <table name="employee_details">
+            <column name="ID">8</column>
+            <column name="Emp_Id">37492</column>
+            <column name="Emp_Password">password</column>
+            <column name="Name">Rashmi Ranjan Senapati</column>
+            <column name="Designation">Author/ Reviewer</column>
+            <column name="Email_Id">ranjan.sena@esterline.com</column>
+            <column name="Team">ECCS</column>
+            <column name="Access">5</column>
+        </table>
+        <table name="employee_details">
+            <column name="ID">9</column>
+            <column name="Emp_Id">46845</column>
+            <column name="Emp_Password">password</column>
+            <column name="Name">Saurav Purkayastha</column>
+            <column name="Designation">Author/ Reviewer</column>
+            <column name="Email_Id">Saurav.Purkayastha@esterline.com</column>
+            <column name="Team">ECCS</column>
+            <column name="Access">5</column>
+        </table>
+        <table name="employee_details">
+            <column name="ID">10</column>
+            <column name="Emp_Id">54084</column>
+            <column name="Emp_Password">password</column>
+            <column name="Name">Praveen Raj</column>
+            <column name="Designation">Author/ Reviewer</column>
+            <column name="Email_Id">qwe</column>
+            <column name="Team">ECCS</column>
+            <column name="Access">5</column>
+        </table>
+        <table name="employee_details">
+            <column name="ID">11</column>
+            <column name="Emp_Id">54173</column>
+            <column name="Emp_Password">password</column>
+            <column name="Name">Gautham Arumugam Gayathridevi</column>
+            <column name="Designation">Author/ Reviewer</column>
+            <column name="Email_Id">qwe</column>
+            <column name="Team">ECCS</column>
+            <column name="Access">5</column>
+        </table>
+        <table name="employee_details">
+            <column name="ID">12</column>
+            <column name="Emp_Id">54980</column>
+            <column name="Emp_Password">password</column>
+            <column name="Name">B. Rajendra Prasad</column>
+            <column name="Designation">Author/ Reviewer</column>
+            <column name="Email_Id">qwe</column>
+            <column name="Team">ECCS</column>
+            <column name="Access">5</column>
+        </table>
+        <table name="employee_details">
+            <column name="ID">13</column>
+            <column name="Emp_Id">1</column>
+            <column name="Emp_Password">admin</column>
+            <column name="Name">admin</column>
+            <column name="Designation">admin</column>
+            <column name="Email_Id">admin</column>
+            <column name="Team">Admin</column>
+            <column name="Access">0</column>
+        </table>
+        <!-- Table qms cr table -->
+        <table name="qms cr table">
+            <column name="ID">1</column>
+            <column name="RequestType">New Document</column>
+            <column name="ChangeRequestID">20180531-01</column>
+            <column name="Requestor">Rajesh Reddy Chirareddy</column>
+            <column name="RequestedFilePath"></column>
+            <column name="CRDescription">rdrhtdsgedfhgh</column>
+            <column name="ImpactedFiles">hrehrttrjh</column>
+            <column name="RequestedDate">31/05/2018</column>
+            <column name="CCB Status">CCB Accepted</column>
+            <column name="CCB Remarks">vvczcvx</column>
+            <column name="SME Approver">Rajesh Reddy Chirareddy</column>
+            <column name="Quality Approver">Abhilash Venugopal</column>
+            <column name="Other Approvers">rgfsdsgd</column>
+            <column name="CRStatus">Initiated</column>
+            <column name="InitialDocVersion"></column>
+            <column name="Impacted Files Version"></column>
+            <column name="NewDocID">vsdvs</column>
+            <column name="RejectReason"></column>
+            <column name="Reviewer"></column>
+            <column name="Review Completion Date"></column>
+            <column name="Approver"></column>
+            <column name="Document Approval Date"></column>
+            <column name="FinalDocVersion">sdvsf</column>
+            <column name="Impacted Files Final Version">vvsdf</column>
+            <column name="CR Closed Date"></column>
+        </table>
+        <table name="qms cr table">
+            <column name="ID">2</column>
+            <column name="RequestType">New Document</column>
+            <column name="ChangeRequestID">20180531-02</column>
+            <column name="Requestor">Rajesh Reddy Chirareddy</column>
+            <column name="RequestedFilePath"></column>
+            <column name="CRDescription">dfsasdf</column>
+            <column name="ImpactedFiles">gasdsad</column>
+            <column name="RequestedDate">31/05/2018</column>
+            <column name="CCB Status">CCB Not Required</column>
+            <column name="CCB Remarks">dsf</column>
+            <column name="SME Approver"></column>
+            <column name="Quality Approver"></column>
+            <column name="Other Approvers"></column>
+            <column name="CRStatus">Initiated</column>
+            <column name="InitialDocVersion"></column>
+            <column name="Impacted Files Version"></column>
+            <column name="NewDocID">sdffds</column>
+            <column name="RejectReason"></column>
+            <column name="Reviewer"></column>
+            <column name="Review Completion Date"></column>
+            <column name="Approver"></column>
+            <column name="Document Approval Date"></column>
+            <column name="FinalDocVersion">sdf</column>
+            <column name="Impacted Files Final Version">fsd</column>
+            <column name="CR Closed Date"></column>
+        </table>
+        <table name="qms cr table">
+            <column name="ID">3</column>
+            <column name="RequestType">New Document</column>
+            <column name="ChangeRequestID">20180531-03</column>
+            <column name="Requestor">Rajesh Reddy Chirareddy</column>
+            <column name="RequestedFilePath"></column>
+            <column name="CRDescription">fdsvsf</column>
+            <column name="ImpactedFiles">vsdfv sdv</column>
+            <column name="RequestedDate">31/05/2018</column>
+            <column name="CCB Status">CCB Accepted</column>
+            <column name="CCB Remarks">vdsz x</column>
+            <column name="SME Approver">Abhilash Venugopal</column>
+            <column name="Quality Approver">Abhilash Venugopal</column>
+            <column name="Other Approvers">vzcxc sdv</column>
+            <column name="CRStatus">Initiated</column>
+            <column name="InitialDocVersion"></column>
+            <column name="Impacted Files Version"></column>
+            <column name="NewDocID">vczxcx</column>
+            <column name="RejectReason"></column>
+            <column name="Reviewer"></column>
+            <column name="Review Completion Date"></column>
+            <column name="Approver"></column>
+            <column name="Document Approval Date"></column>
+            <column name="FinalDocVersion">zxvczxcv</column>
+            <column name="Impacted Files Final Version">vzxvczxcv</column>
+            <column name="CR Closed Date"></column>
+        </table>
+        <table name="qms cr table">
+            <column name="ID">4</column>
+            <column name="RequestType">New Document</column>
+            <column name="ChangeRequestID">20180531-04</column>
+            <column name="Requestor">Rajesh Reddy Chirareddy</column>
+            <column name="RequestedFilePath"></column>
+            <column name="CRDescription">svddfvsdfv</column>
+            <column name="ImpactedFiles">vsdzvzcxv</column>
+            <column name="RequestedDate">31/05/2018</column>
+            <column name="CCB Status"></column>
+            <column name="CCB Remarks"></column>
+            <column name="SME Approver"></column>
+            <column name="Quality Approver"></column>
+            <column name="Other Approvers"></column>
+            <column name="CRStatus">Submitted</column>
+            <column name="InitialDocVersion"></column>
+            <column name="Impacted Files Version"></column>
+            <column name="NewDocID"></column>
+            <column name="RejectReason"></column>
+            <column name="Reviewer"></column>
+            <column name="Review Completion Date"></column>
+            <column name="Approver"></column>
+            <column name="Document Approval Date"></column>
+            <column name="FinalDocVersion"></column>
+            <column name="Impacted Files Final Version"></column>
+            <column name="CR Closed Date"></column>
+        </table>
+    </database>
+</pma_xml_export>
