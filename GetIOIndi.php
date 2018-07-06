@@ -5,9 +5,17 @@
  * Copyright of Esterline Technologies (c) 2018.
  */
 
+/**
+ * Created by PhpStorm.
+ * User: ritwik.shanker
+ * Date: 06-07-2018
+ * Time: 09:48
+ */
 include 'connect.php';
-session_start();
+$_SESSION["SELECTED_IOTeam"] = $_GET["abc"];
+$WO_ID = $_SESSION["SELECTED_IOTeam"];
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,64 +29,50 @@ session_start();
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
     <link href="style.css" rel="stylesheet" type="text/css"/>
 
 </head>
-
 <body>
-
+<h3><b>Associated Illustration</b></h3>
+<br><br>
 <div class="container-fluid">
     <table id="StatusTable">
         <tr>
+            <th>ATA Number</th>
+            <th>IO No</th>
+            <th>Status</th>
             <th>Illustrator</th>
-            <th>Reviewer</th>
-            <th>Graphic ID (Old)</th>
             <th>Type</th>
-            <th> Remarks</th>
             <th>Alloted Date</th>
             <th>Required Date</th>
-
-            <th style="width:60px;">Info</th>
+            <th>Reviewer</th>
         </tr>
 
         <?php
-        $empid = $_SESSION["user_id"];
-        $WO_ID = $_SESSION['SELECTED_WO_ID'];
-        if ($_SESSION["AccessValue"] === '1' or $_SESSION["AccessValue"] === '0')
-        {
-            $sql = "SELECT * FROM `wo_raisingillustration` WHERE `WO_ID` = '$WO_ID'";
-        }
-        else
-        {
-            $sql = "SELECT * FROM `wo_raisingillustration` WHERE (`WO_ID` = '$WO_ID' AND (`IID` = '$empid' OR `RID` = '$empid'))";
-        }
+        $sql = "SELECT * FROM `wo_raisingillustration` WHERE `WO_ID` = '$WO_ID'";
         $result = mysqli_query($conn, $sql);
         while ($row = mysqli_fetch_array($result))
         { ?>
             <tr>
+                <td><?php echo $row["ATA Number"]; ?></td>
+                <td><?php echo $row["IO No"]; ?></td>
+                <td><?php echo $row["Status"]; ?></td>
                 <td><?php echo $row["Illustrator"]; ?></td>
-                <td><?php echo $row["Reviewer"]; ?></td>
-                <td><?php echo $row["Graphic ID Old"]; ?></td>
                 <td><?php echo $row["Type"]; ?></td>
-                <td><?php echo $row["Remarks"]; ?></td>
                 <td><?php echo $row["IO allotted date"]; ?></td>
                 <td><?php echo $row["IO required date"]; ?></td>
-                <td><input type="radio" name="DisplayAssIoButtons" value="<?php echo $row["IO_ID"]; ?>"
-                           onclick="ShowEditRaisingIlluFields(this.value);"></td>
+                <td><?php echo $row["Reviewer"]; ?></td>
             </tr>
             <?php
         } ?>
 
     </table>
-    <!--        <input style = "margin-left:35%;" type = "submit" name = "Add" value = "Add Illu" onclick = "ShowAddRaisingIlluFields(this.value);">-->
-    <!--<input style = "margin-left:35%;" type = "submit" name = "Edit" value = "Edit Illu" onclick = "ShowEditRaisingIlluFields(this.value);">-->
+</div>
+<div id="IOIndi"></div>
 
-    <!/div>
-
-    <!--div id = "EditProjectButtons"></div> <!-- GetEditProjectButtons.php -->
-
-
-    <br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
 
 </body>
 </html>
+

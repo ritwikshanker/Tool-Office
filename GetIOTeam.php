@@ -4,8 +4,17 @@
  * Copyright of Esterline Technologies  Corporation (c) 2018.
  */
 
+/**
+ * Created by PhpStorm.
+ * User: ritwik.shanker
+ * Date: 06-07-2018
+ * Time: 09:48
+ */
 include 'connect.php';
+$_SESSION["SELECTED_WOTeam"] = $_GET["abc"];
+$WO_ID = $_SESSION["SELECTED_WOTeam"];
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,51 +32,47 @@ include 'connect.php';
     <link href="style.css" rel="stylesheet" type="text/css"/>
 
 </head>
-
 <body>
-<h3 align="centre">Team Report</h3>
-
+<h3><b>Associated Illustration</b></h3>
+<br><br>
 <div class="container-fluid">
     <table id="StatusTable">
         <tr>
-            <th style="width:60px;">Info</th>
-            <th>Partner</th>
-            <th>Project</th>
-            <th>Manual</th>
-            <th>Description / Title</th>
-            <th>Type of Work</th>
-            <th>Customer Delivery Date</th>
-            <th>Remarks</th>
-            <!--<th>ID</th> -->
+            <th>ATA Number</th>
+            <th>IO No</th>
+            <th>Status</th>
+            <th>Illustrator</th>
+            <th>Type</th>
+            <th>Alloted Date</th>
+            <th>Required Date</th>
+            <th>Reviewer</th>
         </tr>
 
         <?php
-        $sql = "SELECT * FROM `editing_project`";
+        $usid = $_SESSION["user_id"];
+        $sql = "SELECT * FROM `wo_raisingillustration` WHERE `WO_ID` = '$WO_ID' AND (`IID` = '$usid' OR RID = '$usid')";
         $result = mysqli_query($conn, $sql);
         while ($row = mysqli_fetch_array($result))
         { ?>
             <tr>
-                <td><input type="radio" name="DisplayProjectButtons" value="<?php echo $row["Project"]; ?>"
-                           onclick="ShowAssociatedWOTeam(this.value);"></td>
-                <td><?php echo $row["Partner"]; ?></td>
-                <td><?php echo $row["Project"]; ?></td>
-                <td><?php echo $row["Manual"]; ?></td>
-                <td><?php echo $row["Description"]; ?></td>
-                <td><?php echo $row["Type of Work"]; ?></td>
-                <td><?php echo $row["Customer Delivery Date"]; ?></td>
-                <td><?php echo $row["Remarks"]; ?></td>
-                <!--<td><?php //echo $row["ID"];
-                ?></td>-->
-
+                <td><?php echo $row["ATA Number"]; ?></td>
+                <td><?php echo $row["IO No"]; ?></td>
+                <td><?php echo $row["Status"]; ?></td>
+                <td><?php echo $row["Illustrator"]; ?></td>
+                <td><?php echo $row["Type"]; ?></td>
+                <td><?php echo $row["IO allotted date"]; ?></td>
+                <td><?php echo $row["IO required date"]; ?></td>
+                <td><?php echo $row["Reviewer"]; ?></td>
             </tr>
             <?php
         } ?>
 
     </table>
 </div>
+<div id="IOTeam"></div>
 
-<div id="ProjectPageTeam"></div> <!-- GetEditProjectButtons.php -->
-<br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
 
 </body>
 </html>
+

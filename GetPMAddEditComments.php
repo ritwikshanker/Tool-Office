@@ -33,6 +33,7 @@ $Seleted_Prj = $_SESSION["SELECTED_PRJ"];
                 <th>Partner</th>
                 <th>Project</th>
                 <th>Manual</th>
+                <th>Target%</th>
                 <th>Description / Title</th>
                 <th>Type of Work</th>
                 <th>Customer Delivery Date</th>
@@ -48,6 +49,7 @@ $Seleted_Prj = $_SESSION["SELECTED_PRJ"];
                 <td><input type = "text" id = "EditPartner"  value = "<?php echo $row["Partner"];?>"></td>
                 <td><input type = "text" id = "EditProject"  value = "<?php echo $row["Project"];?>"></td>
                 <td><input type = "text" id = "EditManual"  value = "<?php echo $row["Manual"];?>"></td>
+                <td><input type = "text" id = "EditTarget"  value = "<?php echo $row["Target%"];?>"></td>
                 <td><input type = "text" id = "EditDescription"  value = "<?php echo $row["Description"];?>"></td>
                 <td><input type = "text" id = "EditTypeOfWork"  value = "<?php echo $row["Type of Work"];?>"></td>
                 <td><input type = "text" id = "EditCDdatepicker"  value = "<?php echo $row["Customer Delivery Date"];?>"></td>

@@ -47,17 +47,38 @@ if (isset($_POST["AddWONo"]))
     $AddIRDB = $_POST["AddIR"];
     $AddIRQACPdatepickerDB = $_POST["AddIRQACPdatepicker"];
     $SelectedProject = $_POST["SelectedProject"];
+    $name = $_SESSION["emp_name"];
+
+    $sql = "SELECT Emp_Id FROM tasktrackertool.`employee_details` WHERE `Name` = '$AddOwnerDB'";
+    $result = mysqli_query($conn, $sql);
+    while ($row = mysqli_fetch_array($result))
+    {
+        $OID = $row["Emp_Id"];
+    }
+
+    $sql = "SELECT Emp_Id FROM tasktrackertool.`employee_details` WHERE `Name` = '$AddPRDB'";
+    $result = mysqli_query($conn, $sql);
+    while ($row = mysqli_fetch_array($result))
+    {
+        $PRID = $row["Emp_Id"];
+    }
+
+    $sql = "SELECT Emp_Id FROM tasktrackertool.`employee_details` WHERE `Name` = '$AddIRDB'";
+    $result = mysqli_query($conn, $sql);
+    while ($row = mysqli_fetch_array($result))
+    {
+        $IRID = $row["Emp_Id"];
+    }
+    $insert = "INSERT INTO `associated_wos` (`Project`, `WO No`, `ATA Number`, `Owner`, `WO Allotted date`, `SFCK Date- Planned`, `Peer Reviewer`, `Peer QA Completion Date- Planned`, `Internal Reviewer`, `Internal QA Completion Date- Planned` , `OID` , `PRID`,`IRID`) VALUES ('$SelectedProject', '$AddWONoDB', '$AddATANumberDB', '$AddOwnerDB', '$AddWOAdatepickerDB', '$AddSFCKPdatepickerDB', '$AddPRDB', '$AddPRQACPdatepickerDB', '$AddIRDB', '$AddIRQACPdatepickerDB' , '$OID' , '$PRID', '$IRID')";
+    //echo $insert;
 
 
-    $insert = "INSERT INTO `associated_wos` (`Project`, `WO No`, `ATA Number`, `Owner`, `WO Allotted date`, `SFCK Date- Planned`, `Peer Reviewer`, `Peer QA Completion Date- Planned`, `Internal Reviewer`, `Internal QA Completion Date- Planned`) VALUES ('$SelectedProject', '$AddWONoDB', '$AddATANumberDB', '$AddOwnerDB', '$AddWOAdatepickerDB', '$AddSFCKPdatepickerDB', '$AddPRDB', '$AddPRQACPdatepickerDB', '$AddIRDB', '$AddIRQACPdatepickerDB')";
-    echo $insert;
     if ($conn->query($insert) === True)
     {
         echo 'Work Order added successfully';
     }
 }
-
-// Edit WO Function 
+// Edit WO Function
 //NOT WORKING properly
 if (isset($_POST["EditWONo"]))
 {
@@ -108,6 +129,7 @@ if (isset($_POST["EditPartner"]))
     $EditPartnerDB = $_POST["EditPartner"];
     $EditProjectDB = $_POST["EditProject"];
     $EditManualDB = $_POST["EditManual"];
+    $EditTargetDB = $_POST["EditTarget"];
     $EditDescriptionTitleDB = $_POST["EditDescriptionTitle"];
     $EditTypeofWorkDB = $_POST["EditTypeofWork"];
     $EditCustomerDeliveryDateDB = $_POST["EditCustomerDeliveryDate"];
@@ -132,29 +154,59 @@ if (isset($_POST["EditPartner"]))
 if (isset($_POST["AcceptWO"]))
 {
     session_start();  //Starting the session so can fetch the value of session array
-    date_default_timezone_set("Asia/Kolkata");
-    $GetCurrentDate = date("d/m/20y");
-    $insert = "INSERT INTO `associated_wos` (`StartDate`) VALUES ('GetCurrentDate')";
-    $WO_ID = $_SESSION['SELECTED_WO_ID']; //Session variable containing the value of Unique ID of selected Work Order
-    $update = "UPDATE associated_wos SET StartDate = '$GetCurrentDate' WHERE id = $WO_ID";
-    if ($conn->query($update) === True)
+    $empid = $_SESSION["user_id"];
+    $sql = "SELECT `OID` FROM `associated_wos` WHERE `OID` = '$empid'";
+    $result = mysqli_query($conn, $sql);
+    $OID = '';
+    while ($row = mysqli_fetch_array($result))
     {
-        echo 'Work Order StartDate Updated Successfully';
+        $OID = $row["OID"];
     }
-    $status = "WO Accepted";
-    $statusupd = "UPDATE associated_wos SET `WO Status` = '$status' WHERE `ID` = $WO_ID";
-    $conn->query($statusupd);
+    if (empty($OID))
+    {
+        echo 'You can not start this Work Order';
+    }
+    else
+    {
+        date_default_timezone_set("Asia/Kolkata");
+        $GetCurrentDate = date("d/m/20y");
+        $insert = "INSERT INTO `associated_wos` (`StartDate`) VALUES ('GetCurrentDate')";
+        $WO_ID = $_SESSION['SELECTED_WO_ID']; //Session variable containing the value of Unique ID of selected Work Order
+        $update = "UPDATE associated_wos SET StartDate = '$GetCurrentDate' WHERE id = $WO_ID";
+        if ($conn->query($update) === True)
+        {
+            echo 'Work Order StartDate Updated Successfully';
+        }
+        $status = "WO Accepted";
+        $statusupd = "UPDATE associated_wos SET `WO Status` = '$status' WHERE `ID` = $WO_ID";
+        $conn->query($statusupd);
+    }
 }
 if (isset($_POST["AcceptIO"]))
 {
     session_start();  //Starting the session so can fetch the value of session array
-    date_default_timezone_set("Asia/Kolkata");
-    $GetCurrentDate = date("d/m/20y");
-    $IO_ID = $_SESSION['SELECTED_IO_ID']; //Session variable containing the value of Unique ID of selected I Order
-    $update = "UPDATE `wo_raisingillustration` SET StartDate = '$GetCurrentDate' WHERE IO_ID = $IO_ID";
-    if ($conn->query($update) === True)
+    $empid = $_SESSION["user_id"];
+    $sql = "SELECT `IID` FROM `wo_raisingillustration` WHERE `IID` = '$empid'";
+    $result = mysqli_query($conn, $sql);
+    $IID = '';
+    while ($row = mysqli_fetch_array($result))
     {
-        echo 'IO StartDate Updated Successfully';
+        $IID = $row["IID"];
+    }
+    if (empty($IID))
+    {
+        echo 'You can not start this Illustartion Order';
+    }
+    else
+    {
+        date_default_timezone_set("Asia/Kolkata");
+        $GetCurrentDate = date("d/m/20y");
+        $IO_ID = $_SESSION['SELECTED_IO_ID']; //Session variable containing the value of Unique ID of selected I Order
+        $update = "UPDATE `wo_raisingillustration` SET StartDate = '$GetCurrentDate' WHERE IO_ID = $IO_ID";
+        if ($conn->query($update) === True)
+        {
+            echo 'IO StartDate Updated Successfully';
+        }
     }
 }
 
@@ -162,29 +214,60 @@ if (isset($_POST["AcceptIO"]))
 if (isset($_POST["AddOwnRem"]))
 {
     session_start();  //Starting the session so can fetch the value of session array
-    $WO_ID = $_SESSION['SELECTED_WO_ID']; //Session variable containing the value of Unique ID of selected Work Order
-    $AddOwnerRemarkDB = $_POST["AddOwnRem"];
-    //echo $AddOwnerRemarkDB;
-    //echo $WO_ID;
-    $update = "UPDATE `associated_wos` SET `Owner Remarks` = '$AddOwnerRemarkDB' WHERE `ID` = '$WO_ID'";
-
-    if ($conn->query($update) === True)
+    $empid = $_SESSION["user_id"];
+    $sql = "SELECT `OID` FROM `associated_wos` WHERE `OID` = '$empid'";
+    $result = mysqli_query($conn, $sql);
+    $OID = '';
+    while ($row = mysqli_fetch_array($result))
     {
-        echo 'Remark Added Succesfully';
+        $OID = $row["OID"];
+    }
+    if (empty($OID))
+    {
+        echo 'You can not start this Work Order';
+    }
+    else
+    {
+        $WO_ID = $_SESSION['SELECTED_WO_ID']; //Session variable containing the value of Unique ID of selected Work Order
+        $AddOwnerRemarkDB = $_POST["AddOwnRem"];
+        //echo $AddOwnerRemarkDB;
+        //echo $WO_ID;
+        $update = "UPDATE `associated_wos` SET `Owner Remarks` = '$AddOwnerRemarkDB' WHERE `ID` = '$WO_ID'";
+
+        if ($conn->query($update) === True)
+        {
+            echo 'Remark Added Succesfully';
+        }
     }
 }
+
 if (isset($_POST["AddIlluRem"]))
 {
-    session_start();
-    $IO_ID = $_SESSION["SELECTED_IO_ID"];
-    $AddIlluRemarkDB = $_POST["AddIlluRem"];
-    //echo $AddOwnerRemarkDB;
-    //echo $WO_ID;
-    $update = "UPDATE `wo_raisingillustration` SET `Remarks` = '$AddIlluRemarkDB' WHERE `IO_ID` = '$IO_ID'";
-
-    if ($conn->query($update) === True)
+    session_start();  //Starting the session so can fetch the value of session array
+    $empid = $_SESSION["user_id"];
+    $sql = "SELECT `IID` FROM `wo_raisingillustration` WHERE `IID` = '$empid'";
+    $result = mysqli_query($conn, $sql);
+    $IID = '';
+    while ($row = mysqli_fetch_array($result))
     {
-        echo 'Illustrator Remark Added Succesfully';
+        $IID = $row["IID"];
+    }
+    if (empty($IID))
+    {
+        echo 'You can not start this Illustartion Order';
+    }
+    else
+    {
+        $IO_ID = $_SESSION["SELECTED_IO_ID"];
+        $AddIlluRemarkDB = $_POST["AddIlluRem"];
+        //echo $AddOwnerRemarkDB;
+        //echo $WO_ID;
+        $update = "UPDATE `wo_raisingillustration` SET `Remarks` = '$AddIlluRemarkDB' WHERE `IO_ID` = '$IO_ID'";
+
+        if ($conn->query($update) === True)
+        {
+            echo 'Illustrator Remark Added Succesfully';
+        }
     }
 }
 
@@ -204,10 +287,21 @@ if (isset($_POST["AddIllu"]))
     $AddRaisedDateDB = $_POST["AddRaisedDate"];
     $AddRequiredDateDB = $_POST["AddRequiredDate"];
     $WO_ID = $_SESSION['SELECTED_WO_ID'];
-    //echo nl2br ($AddIlluDB."\n:");
-    //echo $AddReviewerDB;
-    //echo $AddGraphicIDDB;
-    //echo $AddTypeDB;
+    $IID = '';
+    $RID = '';
+    $sql = "SELECT Emp_Id FROM tasktrackertool.`employee_details` WHERE `Name` = '$AddIlluDB'";
+    $result = mysqli_query($conn, $sql);
+    while ($row = mysqli_fetch_array($result))
+    {
+        $IID = $row["Emp_Id"];
+    }
+    $sql = "SELECT Emp_Id FROM tasktrackertool.`employee_details` WHERE `Name` = '$AddReviewerDB'";
+    $result = mysqli_query($conn, $sql);
+    while ($row = mysqli_fetch_array($result))
+    {
+        $RID = $row["Emp_Id"];
+    }
+
     $insert = "INSERT INTO `wo_raisingillustration` (
         `Illustrator`, 
         `Type`, 
@@ -216,7 +310,9 @@ if (isset($_POST["AddIllu"]))
         `Reviewer`, 
         `Graphic ID Old`, 
         `Remarks`,
-        `WO_ID`) VALUES (
+        `WO_ID` ,
+        `IID` ,
+        `RID`) VALUES (
         '$AddIlluDB', 
         '$AddTypeDB', 
         '$AddRaisedDateDB', 
@@ -224,7 +320,9 @@ if (isset($_POST["AddIllu"]))
         '$AddReviewerDB', 
         '$AddGraphicIDDB', 
         '$AddRemarksIlluDB',
-        '$WO_ID')";
+        '$WO_ID' ,
+        '$IID',
+        '$RID')";
     //echo $insert;
     if ($conn->query($insert) === True)
     {
@@ -280,61 +378,76 @@ if (isset($_POST["DeleteIOID"]))
 //Update SFCK Value
 if (isset($_POST["SFCKValue"]))
 {
-    $AddSFCKValue = $_POST["SFCKValue"];
-    $AddSubDate = $_POST["SubDate"];
     session_start();
-    $WO_ID = $_SESSION['SELECTED_WO_ID'];
-    $fetch = "SELECT `WO Status` FROM `associated_wos` WHERE `ID` = '$WO_ID'";
-    $result = mysqli_query($conn, $fetch);
-    $CurrentSFCKVal = "";
+    $empid = $_SESSION["user_id"];
+    $sql = "SELECT `OID` FROM `associated_wos` WHERE `OID` = '$empid'";
+    $result = mysqli_query($conn, $sql);
+    $OID = '';
     while ($row = mysqli_fetch_array($result))
     {
-        $CurrentSFCKVal = $row['WO Status'];
+        $OID = $row["OID"];
     }
-    //echo $CurrentSFCKVal;
-    if ($AddSFCKValue === 'SFCK-Completed' and $CurrentSFCKVal === '' and $_SESSION["IO_DONE"] = "IO_COMPLETE")
+    if (empty($OID))
     {
-        $update = "UPDATE `associated_wos` SET 
+        echo 'You can not SFCHK this order';
+    }
+    else
+    {
+        $AddSFCKValue = $_POST["SFCKValue"];
+        $AddSubDate = $_POST["SubDate"];
+        $WO_ID = $_SESSION['SELECTED_WO_ID'];
+        $fetch = "SELECT `WO Status` FROM `associated_wos` WHERE `ID` = '$WO_ID'";
+        $result = mysqli_query($conn, $fetch);
+        $CurrentSFCKVal = "";
+        while ($row = mysqli_fetch_array($result))
+        {
+            $CurrentSFCKVal = $row['WO Status'];
+        }
+        //echo $CurrentSFCKVal;
+        if ($AddSFCKValue === 'SFCK-Completed' and $CurrentSFCKVal === '' and $_SESSION["IO_DONE"] = "IO_COMPLETE")
+        {
+            $update = "UPDATE `associated_wos` SET 
                                         `WO Status` = '$AddSFCKValue',
                                         `SFCK SubmissionDate` = '$AddSubDate'
                                         WHERE `ID` = '$WO_ID'";
 
 
-        if ($conn->query($update) === True)
-        {
-            echo 'SFCK Sumbitted successfully';
+            if ($conn->query($update) === True)
+            {
+                echo 'SFCK Sumbitted successfully';
+            }
         }
-    }
-    elseif (($AddSFCKValue === 'PR COMNTS SFCK' and $CurrentSFCKVal === 'SFCK-Completed') or ($AddSFCKValue === 'IR COMNTS SFCK' and $CurrentSFCKVal === 'SFCK-Completed'))
-    {
-        $update = "UPDATE `associated_wos` SET 
+        elseif (($AddSFCKValue === 'PR COMNTS SFCK' and $CurrentSFCKVal === 'SFCK-Completed') or ($AddSFCKValue === 'IR COMNTS SFCK' and $CurrentSFCKVal === 'SFCK-Completed'))
+        {
+            $update = "UPDATE `associated_wos` SET 
                                         `WO Status` = '$AddSFCKValue',
                                         `PR_CompletionDate` = '$AddSubDate'
                                         WHERE `ID` = '$WO_ID'";
 
 
-        if ($conn->query($update) === True)
-        {
-            echo 'COMNTS SFCK Submitted Successfully';
+            if ($conn->query($update) === True)
+            {
+                echo 'COMNTS SFCK Submitted Successfully';
+            }
         }
-    }
-    /*elseif ($AddSFCKValue === 'IR COMNTS SFCK' and $CurrentSFCKVal === 'PR COMNTS SFCK')
-    {
-
-        $update = "UPDATE `associated_wos` SET 
-                                        `WO Status` = '$AddSFCKValue',
-                                        `IR_CompletionDate` = '$AddSubDate'
-                                        WHERE `ID` = '$WO_ID'";
-
-
-        if ($conn->query($update) === True)
+        /*elseif ($AddSFCKValue === 'IR COMNTS SFCK' and $CurrentSFCKVal === 'PR COMNTS SFCK')
         {
-            echo 'IR COMNTS SFCK Sumbitted successfully';
+
+            $update = "UPDATE `associated_wos` SET
+                                            `WO Status` = '$AddSFCKValue',
+                                            `IR_CompletionDate` = '$AddSubDate'
+                                            WHERE `ID` = '$WO_ID'";
+
+
+            if ($conn->query($update) === True)
+            {
+                echo 'IR COMNTS SFCK Sumbitted successfully';
+            }
+        }*/
+        else
+        {
+            echo 'You Need to Complete the Previous Check or you have already completed this check for this Work Order';
         }
-    }*/
-    else
-    {
-        echo 'You Need to Complete the Previous Check or you have already completed this check for this Work Order';
     }
 }
 
@@ -342,48 +455,62 @@ if (isset($_POST["SFCKValue"]))
 //Update SFCK IO Value
 if (isset($_POST["SFCKIOValue"]))
 {
-    $AddSFCKValue = $_POST["SFCKIOValue"];
-    $AddSubDate = $_POST["SubDateIO"];
-    session_start();
-    $IO_ID = $_SESSION["SELECTED_IO_ID"];
-    $fetch = "SELECT `Status` FROM `wo_raisingillustration` WHERE `IO_ID` = '$IO_ID'";
-    $result = mysqli_query($conn, $fetch);
-    $CurrentSFCKVal = '';
+    session_start();  //Starting the session so can fetch the value of session array
+    $empid = $_SESSION["user_id"];
+    $sql = "SELECT `IID` FROM `wo_raisingillustration` WHERE `IID` = '$empid'";
+    $result = mysqli_query($conn, $sql);
+    $IID = '';
     while ($row = mysqli_fetch_array($result))
     {
-        $CurrentSFCKVal = $row['Status'];
+        $IID = $row["IID"];
     }
-    //echo $CurrentSFCKVal;
-    if ($AddSFCKValue === 'SFCK-Completed' and $CurrentSFCKVal === '')
+    if (empty($IID))
     {
-        $update = "UPDATE `wo_raisingillustration` SET 
+        echo 'You can not start this Illustartion Order';
+    }
+    else
+    {
+        $AddSFCKValue = $_POST["SFCKIOValue"];
+        $AddSubDate = $_POST["SubDateIO"];
+        $IO_ID = $_SESSION["SELECTED_IO_ID"];
+        $fetch = "SELECT `Status` FROM `wo_raisingillustration` WHERE `IO_ID` = '$IO_ID'";
+        $result = mysqli_query($conn, $fetch);
+        $CurrentSFCKVal = '';
+        while ($row = mysqli_fetch_array($result))
+        {
+            $CurrentSFCKVal = $row['Status'];
+        }
+        //echo $CurrentSFCKVal;
+        if ($AddSFCKValue === 'SFCK-Completed' and $CurrentSFCKVal === '')
+        {
+            $update = "UPDATE `wo_raisingillustration` SET 
                                         `Status` = '$AddSFCKValue',
                                         `SFCK SubmissionDate` = '$AddSubDate'
                                         WHERE `IO_ID` = '$IO_ID'";
 
 
-        if ($conn->query($update) === True)
-        {
-            echo 'SFCK Sumbitted successfully';
+            if ($conn->query($update) === True)
+            {
+                echo 'SFCK Sumbitted successfully';
+            }
         }
-    }
-    elseif (($AddSFCKValue === 'RV COMNTS SFCK' and $CurrentSFCKVal === 'SFCK-Completed') or ($AddSFCKValue === 'OR COMNTS SFCK' and $CurrentSFCKVal === 'SFCK-Completed'))
-    {
-        $update = "UPDATE `wo_raisingillustration` SET 
+        elseif (($AddSFCKValue === 'RV COMNTS SFCK' and $CurrentSFCKVal === 'SFCK-Completed') or ($AddSFCKValue === 'OR COMNTS SFCK' and $CurrentSFCKVal === 'SFCK-Completed'))
+        {
+            $update = "UPDATE `wo_raisingillustration` SET 
                                         `Status` = '$AddSFCKValue',
                                         `RV_SFCKDate` = '$AddSubDate'
                                         WHERE `IO_ID` = '$IO_ID'";
 
-        $_SESSION["IO_DONE"] = "IO_COMPLETE";
-        if ($conn->query($update) === True)
-        {
-            echo 'COMNTS SFCK Sumbitted successfully';
-        }
-    }/*
+            $_SESSION["IO_DONE"] = "IO_COMPLETE";
+            if ($conn->query($update) === True)
+            {
+                echo 'COMNTS SFCK Sumbitted successfully';
+            }
+        }/*
     elseif ($AddSFCKValue === 'OR COMNTS SFCK' and $CurrentSFCKVal === 'RV COMNTS SFCK')
     {
 
-        $update = "UPDATE `wo_raisingillustration` SET 
+        $update = "UPDATE `wo_raisingillustration` SET
                                         `Status` = '$AddSFCKValue',
                                         `OR_SFCKDate` = '$AddSubDate'
                                         WHERE `IO_ID` = '$IO_ID'";
@@ -394,84 +521,104 @@ if (isset($_POST["SFCKIOValue"]))
             echo 'IR COMNTS SFCK Sumbitted successfully';
         }
     }*/
-    else
-    {
-        echo 'You Need to Complete the Previous Check or you have already completed this check for this Work Order';
+        else
+        {
+            echo 'You Need to Complete the Previous Check or you have already completed this check for this Work Order';
+        }
     }
 }
 //Add Reviewer QA
 if (isset($_POST["AddErrorCode"]))
 {
-    $AddErrorCodeDB = $_POST["AddErrorCode"];
-    $AddErrorDescriptionDB = $_POST["AddErrorDescription"];
-    $AddQuantityDB = $_POST["AddQuantity"];
-    $AddStartDateDB = $_POST["AddStartDate"];
-    $AddCompletionDateDB = $_POST["AddCompletionDate"];
-    $AddReviewTypeDB = $_POST["AddReviewType"];
     session_start();
-    $WO_ID = $_SESSION['SELECTED_WO_ID'];
-    if ($AddReviewTypeDB === 'PR')
+    $empid = $_SESSION["user_id"];
+    //echo $empid;
+    $sql = "SELECT `IRID`,`PRID`  FROM `associated_wos` WHERE `PRID` = '$empid' OR IRID = '$empid'";
+    $result = mysqli_query($conn, $sql);
+    $PRID = '';
+    $IRID = '';
+    while ($row = mysqli_fetch_array($result))
     {
-        $AddReviewerType = 'Peer Review';
-        $insert = "INSERT INTO `wo_errorinfo` (
-                        `Error_Code` ,
-                        `Error_Description` ,
-                        `Error_Quantity` ,
-                        `Review_Type` ,
-                        `WO_NO`) VALUES (
-                        '$AddErrorCodeDB' ,
-                        '$AddErrorDescriptionDB' , 
-                        '$AddQuantityDB' ,
-                        '$AddReviewerType' ,
-                        '$WO_ID')";
-        //echo $insert;
-        if ($AddCompletionDateDB === '')
-        {
-            $status = 'Peer RWK';
-            $update = "UPDATE `associated_wos` SET `WO Status` = '$status' WHERE `ID` = '$WO_ID'";
-        }
-        else
-        {
-            $status = 'Peer Review Complete';
-            $update = "UPDATE `associated_wos` SET `WO Status` = '$status' WHERE `ID` = '$WO_ID'";
-        }
-        $conn->query($update);
-        $sql = "SELECT * FROM `wo_reviewerqa` WHERE `WO_ID` = '$WO_ID' AND `reviewType` = '$AddReviewerType'";
-        $result = mysqli_query($conn, $sql);
-        $num_rows = mysqli_num_rows($result);
-        if ($num_rows === 0)
-        {
-            $insertreview = "INSERT INTO `wo_reviewerqa` (
-                                `reviewType`,
-                                `reviewStartDate`,
-                                `reviewCompleteDate`,
-                                `WO_ID`) VALUES (
-                                '$AddReviewerType',
-                                '$AddStartDateDB',
-                                '$AddCompletionDateDB' ,
-                                '$WO_ID')";
-            if ($conn->query($insertreview) === True)
-            {
-                echo 'Start date updated successfully';
-            }
-        }
-        else
-        {
-            if ($AddStartDateDB !== '')
-            {
-                echo 'Review Already Started, Start Date cant be changed';
-            }
-        }
-
-        if ($conn->query($insert) === True)
-        {
-            echo 'Error Code Submitted successfully';
-        }
+        $PRID = $row["PRID"];
+        $IRID = $row["IRID"];
     }
-    elseif ($AddReviewTypeDB === 'IR')
+    echo $PRID;
+    echo $IRID;
+    if ((empty($PRID)) and (empty($IRID)))
     {
-        $AddReviewerType = 'Internal Review';
-        $insert = "INSERT INTO `wo_errorinfo` (
+        echo 'You can not add review order';
+    }
+    else
+    {
+        $AddErrorCodeDB = $_POST["AddErrorCode"];
+        $AddErrorDescriptionDB = $_POST["AddErrorDescription"];
+        $AddQuantityDB = $_POST["AddQuantity"];
+        $AddStartDateDB = $_POST["AddStartDate"];
+        $AddCompletionDateDB = $_POST["AddCompletionDate"];
+        $AddReviewTypeDB = $_POST["AddReviewType"];
+        $WO_ID = $_SESSION['SELECTED_WO_ID'];
+        if ($AddReviewTypeDB === 'PR')
+        {
+            $AddReviewerType = 'Peer Review';
+            $insert = "INSERT INTO `wo_errorinfo` (
+                        `Error_Code` ,
+                        `Error_Description` ,
+                        `Error_Quantity` ,
+                        `Review_Type` ,
+                        `WO_NO`) VALUES (
+                        '$AddErrorCodeDB' ,
+                        '$AddErrorDescriptionDB' , 
+                        '$AddQuantityDB' ,
+                        '$AddReviewerType' ,
+                        '$WO_ID')";
+            //echo $insert;
+            if ($AddCompletionDateDB === '')
+            {
+                $status = 'Peer RWK';
+                $update = "UPDATE `associated_wos` SET `WO Status` = '$status' WHERE `ID` = '$WO_ID'";
+            }
+            else
+            {
+                $status = 'Peer Review Complete';
+                $update = "UPDATE `associated_wos` SET `WO Status` = '$status' WHERE `ID` = '$WO_ID'";
+            }
+            $conn->query($update);
+            $sql = "SELECT * FROM `wo_reviewerqa` WHERE `WO_ID` = '$WO_ID' AND `reviewType` = '$AddReviewerType'";
+            $result = mysqli_query($conn, $sql);
+            $num_rows = mysqli_num_rows($result);
+            if ($num_rows === 0)
+            {
+                $insertreview = "INSERT INTO `wo_reviewerqa` (
+                                `reviewType`,
+                                `reviewStartDate`,
+                                `reviewCompleteDate`,
+                                `WO_ID`) VALUES (
+                                '$AddReviewerType',
+                                '$AddStartDateDB',
+                                '$AddCompletionDateDB' ,
+                                '$WO_ID')";
+                if ($conn->query($insertreview) === True)
+                {
+                    echo 'Start date updated successfully';
+                }
+            }
+            else
+            {
+                if ($AddStartDateDB !== '')
+                {
+                    echo 'Review Already Started, Start Date cant be changed';
+                }
+            }
+
+            if ($conn->query($insert) === True)
+            {
+                echo 'Error Code Submitted successfully';
+            }
+        }
+        elseif ($AddReviewTypeDB === 'IR')
+        {
+            $AddReviewerType = 'Internal Review';
+            $insert = "INSERT INTO `wo_errorinfo` (
                         `Error_Code` ,
                         `Error_Description` ,
                         `Error_Quantity` ,
@@ -483,23 +630,23 @@ if (isset($_POST["AddErrorCode"]))
                         '$AddReviewerType' ,
                         '$WO_ID')";
 
-        if ($AddCompletionDateDB === '')
-        {
-            $status = 'Internal RWK';
-            $update = "UPDATE `associated_wos` SET `WO Status` = '$status' WHERE `ID` = '$WO_ID'";
-        }
-        else
-        {
-            $status = 'Internal Review Complete';
-            $update = "UPDATE `associated_wos` SET `WO Status` = '$status' WHERE `ID` = '$WO_ID'";
-        }
-        $conn->query($update);
-        $sql = "SELECT * FROM `wo_reviewerqa` WHERE `WO_ID` = '$WO_ID' AND `reviewType` = '$AddReviewerType'";
-        $result = mysqli_query($conn, $sql);
-        $num_rows = mysqli_num_rows($result);
-        if ($num_rows === 0)
-        {
-            $insertreview = "INSERT INTO `wo_reviewerqa` (
+            if ($AddCompletionDateDB === '')
+            {
+                $status = 'Internal RWK';
+                $update = "UPDATE `associated_wos` SET `WO Status` = '$status' WHERE `ID` = '$WO_ID'";
+            }
+            else
+            {
+                $status = 'Internal Review Complete';
+                $update = "UPDATE `associated_wos` SET `WO Status` = '$status' WHERE `ID` = '$WO_ID'";
+            }
+            $conn->query($update);
+            $sql = "SELECT * FROM `wo_reviewerqa` WHERE `WO_ID` = '$WO_ID' AND `reviewType` = '$AddReviewerType'";
+            $result = mysqli_query($conn, $sql);
+            $num_rows = mysqli_num_rows($result);
+            if ($num_rows === 0)
+            {
+                $insertreview = "INSERT INTO `wo_reviewerqa` (
                                 `reviewType`,
                                 `reviewStartDate`,
                                 `reviewCompleteDate`,
@@ -509,21 +656,22 @@ if (isset($_POST["AddErrorCode"]))
                                 '$AddCompletionDateDB' ,
                                 '$WO_ID')";
 
-            if ($conn->query($insertreview) === True)
-            {
-                echo 'Start date updated successfully';
+                if ($conn->query($insertreview) === True)
+                {
+                    echo 'Start date updated successfully';
+                }
             }
-        }
-        else
-        {
-            if ($AddStartDateDB !== '')
+            else
             {
-                echo 'Review Already Started, Start Date cant be changed';
+                if ($AddStartDateDB !== '')
+                {
+                    echo 'Review Already Started, Start Date cant be changed';
+                }
             }
-        }
-        if ($conn->query($insert) === True)
-        {
-            echo 'Error Code Submitted successfully';
+            if ($conn->query($insert) === True)
+            {
+                echo 'Error Code Submitted successfully';
+            }
         }
     }
 }
@@ -634,15 +782,24 @@ if (isset($_POST["CalculateReviewID"]))
 {
     $SelectedReviewWOID = $_POST["CalculateReviewID"];
     //echo $SelectedReviewWOID;
-
-    $select = "SELECT * FROM `wo_errorinfo` WHERE `ID` = '$SelectedReviewWOID'";
+    $sel = "SELECT * FROM `wo_reviewerqa` WHERE ID = '$SelectedReviewWOID'";
+    $res = mysqli_query($conn, $sel);
+    $num = mysqli_num_rows($res);
+    while ($row = mysqli_fetch_array($res))
+    {
+        $reviewType = $row["reviewType"];
+        $WO_ID = $row["WO_ID"];
+    }
+    $select = "SELECT * FROM `wo_errorinfo` WHERE Review_Type = '$reviewType' AND WO_NO = '$WO_ID'";
     $result = mysqli_query($conn, $select);
     $num_rows = mysqli_num_rows($result);
     $score = 100;
     $totalErrorDeduction = 0;
     while ($row = mysqli_fetch_array($result))
     {
-        echo "ritwik";
+        $Error_Code = $row["Error_Code"];
+        $sql = "INSERT INTO `wo_errorinfo` (ErrorLoss) SELECT `ded` FROM `errorcodeinfo` WHERE errorcode = $Error_Code";
+        //echo "ritwik";
         $ded = $row["ErrorLoss"];
         $quantity = $row["Error_Quantity"];
         $totalErrorDeduction += (int)$ded * (int)$quantity;
@@ -870,3 +1027,4 @@ if (isset($_POST["SNDDateIO"]))
     $conn->query($update);
 }
 ?>
+

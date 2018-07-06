@@ -1,12 +1,12 @@
 <?php
 /**
- * Created by PhpStorm.
  * User: ritwik.shanker
- * Copyright of Esterline Technologies (c) 2018.
+ * Copyright of Esterline Technologies  Corporation (c) 2018.
  */
 
 include 'connect.php';
 session_start();
+$_SESSION["SELECTED_PRJ"] = $_GET["rit"];
 $Seleted_Prj = $_SESSION["SELECTED_PRJ"];
 //$_SESSION['varname'] = $row["ID"];
 ?>
@@ -66,7 +66,7 @@ $Seleted_Prj = $_SESSION["SELECTED_PRJ"];
         { ?>
             <tr>
                 <td><input type="radio" name="DisplayWOButtons" value="<?php echo $row["ID"]; ?>"
-                           onclick="ShowAssociatedWoButtons(this.value);"></td>
+                           onclick="ShowIOIndi(this.value);"></td>
                 <td><?php echo $row["ATA Number"]; ?></td>
                 <td><?php echo $row["WO No"]; ?></td>
                 <td><?php echo $row["WO Status"]; ?></td>
@@ -88,7 +88,7 @@ $Seleted_Prj = $_SESSION["SELECTED_PRJ"];
         } ?>
     </table>
 </div>
-<div id="AssociatedWoButtons"></div>
+<div id="WOIndi"></div>
 <br><br>
 
 </body>

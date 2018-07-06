@@ -1,4 +1,11 @@
+<?php
+/**
+ * User: ritwik.shanker
+ * Copyright of Esterline Technologies  Corporation (c) 2018.
+ */
 
+include 'connect.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,15 +20,56 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href = "style.css" rel= "stylesheet" type= "text/css"/>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
 
-</head> 
+</head>
 
 <body>
 
-    <h3>IndividualSummary</h3>
+<h3>Individual Summary</h3>
 
+<div class="container-fluid">
+    <table id="StatusTable">
+        <tr>
+            <th style="width:60px;">Info</th>
+            <th>Partner</th>
+            <th>Project</th>
+            <th>Manual</th>
+            <th>Description / Title</th>
+            <th>Type of Work</th>
+            <th>Customer Delivery Date</th>
+            <th>Remarks</th>
+            <!--<th>ID</th> -->
+        </tr>
+
+        <?php
+        $sql = "SELECT * FROM `editing_project`";
+        $result = mysqli_query($conn, $sql);
+        while ($row = mysqli_fetch_array($result))
+        { ?>
+            <tr>
+                <td><input type="radio" name="DisplayProjectButtons" value="<?php echo $row["Project"]; ?>"
+                           onclick="ShowAssociatedWOIndi(this.value);"></td>
+                <td><?php echo $row["Partner"]; ?></td>
+                <td><?php echo $row["Project"]; ?></td>
+                <td><?php echo $row["Manual"]; ?></td>
+                <td><?php echo $row["Description"]; ?></td>
+                <td><?php echo $row["Type of Work"]; ?></td>
+                <td><?php echo $row["Customer Delivery Date"]; ?></td>
+                <td><?php echo $row["Remarks"]; ?></td>
+                <!--<td><?php //echo $row["ID"];
+                ?></td>-->
+
+            </tr>
+            <?php
+        } ?>
+
+    </table>
+</div>
+
+<div id="ProjectPageTeam"></div> <!-- GetEditProjectButtons.php -->
 <br><br><br><br><br><br>
+
 
 </body>
 </html>

@@ -5,7 +5,7 @@
 - https://www.phpmyadmin.net
 -
 - Host: 127.0.0.1
-- Generation Time: Jul 05, 2018 at 02:37 PM
+- Generation Time: Jul 06, 2018 at 11:03 AM
 - Server version: 10.1.26-MariaDB
 - PHP Version: 7.1.9
 -->
@@ -90,7 +90,7 @@
         <table name="employee_details">
             <column name="ID">3</column>
             <column name="Emp_Id">48989</column>
-            <column name="Emp_Password">password</column>
+            <column name="Emp_Password">123</column>
             <column name="Name">Aswini Sirela</column>
             <column name="Designation">Author/ Reviewer</column>
             <column name="Email_Id">Aswini.Sirela@esterline.com</column>
@@ -170,7 +170,7 @@
         <table name="employee_details">
             <column name="ID">11</column>
             <column name="Emp_Id">54173</column>
-            <column name="Emp_Password">password</column>
+            <column name="Emp_Password">123</column>
             <column name="Name">Gautham Arumugam Gayathridevi</column>
             <column name="Designation">Author/ Reviewer</column>
             <column name="Email_Id">qwe</column>

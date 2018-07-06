@@ -44,7 +44,7 @@ session_start();
                 <th>OWNER</th>
                 <td>
                     <select name="owner" id="AddOwner" title="Owner">
-                        <option selected>--Select--</option>
+                        <option selected disabled>--Select--</option>
                         <?php
                         $sql = "SELECT Name FROM `employee_details` ORDER BY Name";
                         $result = mysqli_query($conn, $sql);
@@ -73,6 +73,7 @@ session_start();
                 <th>PR</th>
                 <td>
                     <select name="PR" id="AddPR" title="Peer Reviewer">
+                        <option selected disabled>--Select--</option>
                         <?php
                         $sql = "SELECT Name FROM `employee_details` ORDER BY Name";
                         $result = mysqli_query($conn, $sql);
@@ -96,6 +97,7 @@ session_start();
                 <th>IR</th>
                 <td>
                     <select name="IR" id="AddIR" title="Internal Reviewer">
+                        <option selected disabled>--Select--</option>
                         <?php
                         $sql = "SELECT Name FROM `employee_details` ORDER BY Name";
                         $result = mysqli_query($conn, $sql);

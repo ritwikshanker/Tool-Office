@@ -1,7 +1,6 @@
 /*
- * Created by PhpStorm.
  * User: ritwik.shanker
- * Copyright of Esterline Technologies (c) 2018.
+ * Copyright of Esterline Technologies  Corporation (c) 2018.
  */
 
 // Edit Home Page Buttons functions
@@ -98,11 +97,11 @@ function ShowTeamReport(str)
     }
 }
 
-function ShowTeamReport(str)
+function ShowAssociatedWOTeam(str)
 {
     if (str == "")
     {
-        document.getElementById("ProjectPage").innerHTML = "";
+        document.getElementById("ProjectPageTeam").innerHTML = "";
         return;
     }
     else
@@ -121,10 +120,106 @@ function ShowTeamReport(str)
         {
             if (this.readyState == 4 && this.status == 200)
             {
-                document.getElementById("ProjectPage").innerHTML = this.responseText;
+                document.getElementById("ProjectPageTeam").innerHTML = this.responseText;
             }
         };
-        xmlhttp.open("GET", "TeamReport.php?j=" + str, true);
+        xmlhttp.open("GET", "GetWOTeam.php?zxc=" + str, true);
+        //alert("Ritwik");
+        xmlhttp.send();
+    }
+}
+
+function ShowAssociatedWOIndi(str)
+{
+    if (str == "")
+    {
+        document.getElementById("ProjectPageTeam").innerHTML = "";
+        return;
+    }
+    else
+    {
+        if (window.XMLHttpRequest)
+        {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        }
+        else
+        {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function ()
+        {
+            if (this.readyState == 4 && this.status == 200)
+            {
+                document.getElementById("ProjectPageTeam").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET", "GetWOIndi.php?rit=" + str, true);
+        //alert("Ritwik");
+        xmlhttp.send();
+    }
+}
+function ShowIOIndi(str)
+{
+    if (str == "")
+    {
+        document.getElementById("WOIndi").innerHTML = "";
+        return;
+    }
+    else
+    {
+        if (window.XMLHttpRequest)
+        {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        }
+        else
+        {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function ()
+        {
+            if (this.readyState == 4 && this.status == 200)
+            {
+                document.getElementById("WOIndi").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET", "GetIOIndi.php?abc=" + str, true);
+        //alert("Ritwik");
+        xmlhttp.send();
+    }
+}
+
+function ShowAssociatedIOTeam(str)
+{
+    if (str == "")
+    {
+        document.getElementById("WOPage").innerHTML = "";
+        return;
+    }
+    else
+    {
+        if (window.XMLHttpRequest)
+        {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        }
+        else
+        {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function ()
+        {
+            if (this.readyState == 4 && this.status == 200)
+            {
+                document.getElementById("WOPage").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET", "GetIOTeam.php?abc=" + str, true);
+        //alert("Ritwik");
         xmlhttp.send();
     }
 }
@@ -1546,6 +1641,7 @@ $(document).ready(function ()
                 var EditPartner = $("#EditPartner").val();
                 var EditProject = $("#EditProject").val();
                 var EditManual = $("#EditManual").val();
+                var EditTarget = $("#EditTarget").val();
                 var EditDescriptionTitle = $("#EditDescription").val();
                 var EditTypeofWork = $("#EditTypeOfWork").val();
                 var EditCustomerDeliveryDate = $("#EditCDdatepicker").val();
@@ -1554,7 +1650,7 @@ $(document).ready(function ()
             var SelectedProject = $("#SelectedProject").val();
             //window.alert(SelectedProject)
             // Returns successful data submission message when the entered information is stored in database.
-            var dataString = 'EditPartner=' + EditPartner + '&EditProject=' + EditProject + '&EditManual=' + EditManual + '&EditDescriptionTitle=' + EditDescriptionTitle + '&EditTypeofWork=' + EditTypeofWork + '&EditCustomerDeliveryDate=' + EditCustomerDeliveryDate + '&EditRemarks=' + EditRemarks;
+            var dataString = 'EditPartner=' + EditPartner + '&EditProject=' + EditProject + '&EditManual=' + EditManual + '&EditTarget=' + EditTarget + '&EditDescriptionTitle=' + EditDescriptionTitle + '&EditTypeofWork=' + EditTypeofWork + '&EditCustomerDeliveryDate=' + EditCustomerDeliveryDate + '&EditRemarks=' + EditRemarks;
             //alert(dataString);
         }
 
@@ -1686,7 +1782,7 @@ $(document).ready(function ()
             var SubDateIO = $("#SdatepickerIO").val();
 
             var dataString = 'SFCKIOValue=' + SFCKIOValue + '&SubDateIO=' + SubDateIO;
-            alert(dataString);
+            //alert(dataString);
         }
         if ($(event.target).is("#PostAddReviewerQAFields"))
         {
@@ -1698,7 +1794,7 @@ $(document).ready(function ()
             var AddCompletionDate = $("#AddCompletionDate").val();
             var AddReviewType = $("#AddReview").val();
             var dataString = 'AddErrorCode=' + AddErrorCode + '&AddErrorDescription=' + AddErrorDescription + '&AddQuantity=' + AddQuantity + '&AddStartDate=' + AddStartDate + '&AddCompletionDate=' + AddCompletionDate + '&AddReviewType=' + AddReviewType;
-            alert(dataString);
+            //alert(dataString);
         }
 //QAIO
         if ($(event.target).is("#PostAddReviewerQAIOFields"))

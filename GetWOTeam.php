@@ -5,11 +5,18 @@
  * Copyright of Esterline Technologies (c) 2018.
  */
 
+/**
+ * Created by PhpStorm.
+ * User: ritwik.shanker
+ * Date: 06-07-2018
+ * Time: 09:34
+ */
 include 'connect.php';
-session_start();
-$Seleted_Prj = $_SESSION["SELECTED_PRJ"];
-//$_SESSION['varname'] = $row["ID"];
+$_SESSION["Selected_projectTeam"] = $_GET["zxc"];
+$Seleted_Prj = $_SESSION["Selected_projectTeam"];
+//echo $Seleted_Prj;
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,22 +58,14 @@ $Seleted_Prj = $_SESSION["SELECTED_PRJ"];
         </tr>
 
         <?php
-        $empid = $_SESSION["user_id"];
-        if ($_SESSION["AccessValue"] === '1' or $_SESSION["AccessValue"] === '0')
-        {
-            $sql = "SELECT * FROM `associated_wos` WHERE `Project` = '$Seleted_Prj'";
-        }
-        else
-        {
-            $sql = "SELECT * FROM `associated_wos` WHERE (`Project` = '$Seleted_Prj' AND (`OID` = '$empid' OR `PRID` = '$empid' OR `IRID` = '$empid'))";
-        }
+        $sql = "SELECT * FROM `associated_wos` WHERE `Project` = '$Seleted_Prj'";
         //echo $sql;
         $result = mysqli_query($conn, $sql);
         while ($row = mysqli_fetch_array($result))
         { ?>
             <tr>
                 <td><input type="radio" name="DisplayWOButtons" value="<?php echo $row["ID"]; ?>"
-                           onclick="ShowAssociatedWoButtons(this.value);"></td>
+                           onclick="ShowAssociatedIOTeam(this.value);"></td>
                 <td><?php echo $row["ATA Number"]; ?></td>
                 <td><?php echo $row["WO No"]; ?></td>
                 <td><?php echo $row["WO Status"]; ?></td>
@@ -88,8 +87,11 @@ $Seleted_Prj = $_SESSION["SELECTED_PRJ"];
         } ?>
     </table>
 </div>
-<div id="AssociatedWoButtons"></div>
+<div id="WOPage"></div>
 <br><br>
 
 </body>
 </html>
+
+
+
