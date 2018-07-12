@@ -31,6 +31,10 @@ session_start();
     <div class="container-fluid">
         <table class="table">
             <tr>
+            <tr>
+                <th>IO No.</th>
+                <td><input type="text" name="IONO" id="IONO"></td>
+            </tr>
                 <th>Illustrator</th>
                 <td>
                     <select name="Illustrator" id="Illustrator" title="Illustrator">
@@ -85,12 +89,12 @@ session_start();
 
             <tr>
                 <th>Raised Date</th>
-                <td><input type="text" id="Raiseddatepicker" name="RaisedDate"></td>
+                <td><input type="date" id="Raiseddatepicker" name="RaisedDate"></td>
             </tr>
 
             <tr>
                 <th>Required Date</th>
-                <td><input type="text" id="Requireddatepicker" name="RequiredDate"></td>
+                <td><input type="date" id="Requireddatepicker" name="RequiredDate"></td>
             </tr>
 
         </table>

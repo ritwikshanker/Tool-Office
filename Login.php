@@ -16,6 +16,9 @@
         }
     </style>
 
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAq6urAJaWlgCMjIwAa2trAIB9egCjo6MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEVQAAAAAAAARVMAAAAAAABEUhAAAAAAAEUyEAAAAAAARTIQAAAAAABEUhAAAAAAAEVTEAAAAAAARVIQAAAAAABEUhAAAAAAREVSIQAAAAREVVIhEAAABEVVACEQAAAERVUAIRAAAAREVTMhEAAAAERFUiYAAAAAAERVJgAAD4/wAA+H8AAPg/AAD4PwAA+D8AAPg/AAD4PwAA+D8AAPg/AADgHwAAwA8AAMGPAADBjwAAwA8AAOAfAAD4HwAA"
+          rel="icon" type="image/x-icon"/>
+
     <script>
         $(document).ready(function ()
         {
@@ -90,40 +93,40 @@ if (isset($_POST['ResetPassword']))
                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                     <input type="password" class="form-control" name="password" placeholder="password" required>
                 </div>
-<!--                <div>-->
-<!--                    <label style="width: 900px">-->
-<!--                        <select name="Select Team" style="margin-left:16%;text-align: center;" id="TeamValue" required>-->
-<!--                            <option value="" disabled selected>--Select Team--</option>-->
-<!--                            <optgroup label="ECCS">-->
-<!--                                <option value="korry">Korry</option>-->
-<!--                            </optgroup>-->
-<!--                            <optgroup label="EAD">-->
-<!--                                <option value="defense">Defense</option>-->
-<!--                                <option value="avionics">Avionics</option>-->
-<!--                                <option value="svs">SVS</option>-->
-<!--                            </optgroup>-->
-<!--                            <optgroup label="EAS">-->
-<!--                                <option value="aunitrol">Aunitrol</option>-->
-<!--                                <option value="veston">Veston</option>-->
-<!--                            </optgroup>-->
-<!--                            <optgroup label="EPS">-->
-<!--                                <option value="lie">LIE</option>-->
-<!--                            </optgroup>-->
-<!--                        </select>-->
-<!--                    </label>-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                    <label style="width: 900px">-->
-<!--                        <select name="Select Role" style="margin-left:16%;" id="RoleValue" required>-->
-<!--                            <option value="" disabled selected>--Select Role--</option>-->
-<!--                            <option value="PM">Manager</option>-->
-<!--                            <option value="AU">Author</option>-->
-<!--                            <option value="PR">Peer Reviewer</option>-->
-<!--                            <option value="IR">Internal Reviewer</option>-->
-<!--                            <option value="ILR">Illustrator/Reviewer</option>-->
-<!--                        </select>-->
-<!--                    </label>-->
-<!--                </div>-->
+                <!--                <div>-->
+                <!--                    <label style="width: 900px">-->
+                <!--                        <select name="Select Team" style="margin-left:16%;text-align: center;" id="TeamValue" required>-->
+                <!--                            <option value="" disabled selected>--Select Team--</option>-->
+                <!--                            <optgroup label="ECCS">-->
+                <!--                                <option value="korry">Korry</option>-->
+                <!--                            </optgroup>-->
+                <!--                            <optgroup label="EAD">-->
+                <!--                                <option value="defense">Defense</option>-->
+                <!--                                <option value="avionics">Avionics</option>-->
+                <!--                                <option value="svs">SVS</option>-->
+                <!--                            </optgroup>-->
+                <!--                            <optgroup label="EAS">-->
+                <!--                                <option value="aunitrol">Aunitrol</option>-->
+                <!--                                <option value="veston">Veston</option>-->
+                <!--                            </optgroup>-->
+                <!--                            <optgroup label="EPS">-->
+                <!--                                <option value="lie">LIE</option>-->
+                <!--                            </optgroup>-->
+                <!--                        </select>-->
+                <!--                    </label>-->
+                <!--                </div>-->
+                <!--                <div>-->
+                <!--                    <label style="width: 900px">-->
+                <!--                        <select name="Select Role" style="margin-left:16%;" id="RoleValue" required>-->
+                <!--                            <option value="" disabled selected>--Select Role--</option>-->
+                <!--                            <option value="PM">Manager</option>-->
+                <!--                            <option value="AU">Author</option>-->
+                <!--                            <option value="PR">Peer Reviewer</option>-->
+                <!--                            <option value="IR">Internal Reviewer</option>-->
+                <!--                            <option value="ILR">Illustrator/Reviewer</option>-->
+                <!--                        </select>-->
+                <!--                    </label>-->
+                <!--                </div>-->
                 <br>
                 <input type="submit" value="Login" name="Login" style="margin-left:40%;">
             </form>

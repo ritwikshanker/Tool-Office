@@ -28,7 +28,7 @@ include 'connect.php';
             border-right: 1px solid #ddd;
             border-bottom: 1px solid #ddd;
             padding: 8px;
-            overflow: hidden;
+            overflow: auto;
         }
     </style>
 
@@ -86,7 +86,7 @@ include 'connect.php';
                 ?>
                 <td rowspan="<?php echo $num_rows + 1 ?>"><?php echo $row1["reviewScore"]; ?></td>
                 <td rowspan="<?php echo $num_rows + 1 ?>"><?php echo $row1["reviewStartDate"]; ?></td>
-                <td rowspan="<?php echo $num_rows + 1 ?>">---</td>
+                <td rowspan="<?php echo $num_rows + 1 ?>"><?php echo $row1["IncorporationDate"] ?></td>
                 <td rowspan="<?php echo $num_rows + 1 ?>"><?php echo $row1["reviewCompleteDate"]; ?></td>
                 <?php
             }
@@ -119,7 +119,7 @@ include 'connect.php';
                 ?>
                 <td rowspan="<?php echo $num_rows + 1 ?>"><?php echo $row1["reviewScore"]; ?></td>
                 <td rowspan="<?php echo $num_rows + 1 ?>"><?php echo $row1["reviewStartDate"]; ?></td>
-                <td rowspan="<?php echo $num_rows + 1 ?>">---</td>
+                <td rowspan="<?php echo $num_rows + 1 ?>"><?php echo $row1["IncorporationDate"]; ?></td>
                 <td rowspan="<?php echo $num_rows + 1 ?>"><?php echo $row1["reviewCompleteDate"]; ?></td>
                 <?php
             }
@@ -143,35 +143,31 @@ include 'connect.php';
     <table id="StatusTable">
         <tr>
             <th>Phase</th>
-            <th>Score</th>
-            <th>Received Date</th>
-            <th>Completion Date</th>
-            <th>Send Date</th>
-            <th>Accepted Date</th>
-            <th>Error Code</th>
-            <th>Error Description</th>
-            <th>Escape</th>
+            <!--                <th>Score</th>-->
+            <th>Draft Delivery</th>
+            <th>Shop Verification Date</th>
+            <th>Final Delivery Date</th>
+            <!--            <th>Accepted Date</th>-->
+            <!--                <th>Error Code</th>-->
+            <!--                <th>Error Description</th>-->
+            <!--                <th>Escape</th>-->
         </tr>
+        <!--            <tr>-->
+        <!--                <th>FTA</th>-->
+        <!--                <td>---</td>-->
+        <!--                <td>---</td>-->
+        <!--                <td>---</td>-->
+        <!--                <td>---</td>-->
+        <!--                <td>---</td>-->
+        <!--                <td>---</td>-->
+        <!--                <td>---</td>-->
+        <!--                <td>---</td>-->
+        <!--            </tr>-->
         <tr>
-            <th>FTA</th>
-            <td>---</td>
-            <td>---</td>
-            <td>---</td>
-            <td>---</td>
-            <td>---</td>
-            <td>---</td>
-            <td>---</td>
-            <td>---</td>
-        </tr>
+
+
         <tr>
-            <?php
-            $value = 'Internal Review';
-            $sql = "SELECT * FROM `wo_externalerror` WHERE `WO_ID` = '$WO_ID'";
-            $result = mysqli_query($conn, $sql);
-            $num_rows = mysqli_num_rows($result);
-            ?>
-        <tr>
-            <th rowspan="<?php echo $num_rows + 1; ?>">RWK</th>
+            <th>External</th>
             <?php
             $select = "SELECT * FROM `wo_externalqa` WHERE `WO_ID` = '$WO_ID'";
             $result1 = mysqli_query($conn, $select);
@@ -179,25 +175,37 @@ include 'connect.php';
             while ($row1 = mysqli_fetch_array($result1))
             {
                 ?>
-                <td rowspan="<?php echo $num_rows + 1 ?>"><?php echo $row1["Score"]; ?></td>
-                <td rowspan="<?php echo $num_rows + 1 ?>"><?php echo $row1["ReceivedDate"]; ?></td>
-                <td rowspan="<?php echo $num_rows + 1 ?>"><?php echo $row1["CompletionDate"]; ?></td>
-                <td rowspan="<?php echo $num_rows + 1 ?>"><?php echo $row1["SendDate"]; ?></td>
-                <td rowspan="<?php echo $num_rows + 1 ?>"><?php echo $row1["AcceptedDate"]; ?></td>
-                <?php
+                <!--                <td rowspan="--><?php //echo $num_rows + 1
+                ?><!--">-->
+                <!--                    --><?php //echo $row1["Score"];
+                ?><!--</td>-->
+                <td>
+                    <?php echo $row1["DraftDeliveryDate"]; ?></td>
+                <td>
+                    <?php echo $row1["ShopVerificationDate"]; ?></td>
+                <td>
+                    <?php echo $row1["SendDate"]; ?></td>
+                <!--                <td rowspan="--><?php //echo $num_rows + 1
+                ?><!--">-->
+                <!--                    --><?php //echo $row1["AcceptedDate"];
+                ?><!--</td>-->
+                <!--                --><?php
             }
             ?>
         </tr>
-        <?php
-        while ($row = mysqli_fetch_array($result))
-        { ?>
-            <tr>
-                <td><?php echo $row["Error_Code"]; ?></td>
-                <td><?php echo $row["Error_Desc"]; ?></td>
-                <td><?php echo $row["Escapes"]; ?></td>
-            </tr>
-            <?php
-        } ?>
+        <!--        --><?php
+        //        while ($row = mysqli_fetch_array($result))
+        //        { ?>
+        <!--            <tr>-->
+        <!--                <!--                <td>--<?php ////echo $row["Error_Code"];
+        //                ?><!--<!--</td>-->
+        <!--                <!--                <td>--><?php ////echo $row["Error_Desc"];
+        //                ?><!--<!--</td>-->
+        <!--                <!--                <td>--><?php ////echo $row["Escapes"];
+        //                ?><!--<!--</td>-->
+        <!--            </tr>-->
+        <!--            --><?php
+        //        } ?>
     </table>
 </div>
 

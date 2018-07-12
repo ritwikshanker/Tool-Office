@@ -30,7 +30,7 @@ $_SESSION['SELECTED_WO_ID'] = $_GET["u"]; //Getting ID of selected WO
 <ul class="nav nav-tabs nav-justified">
 
     <li><a data-toggle="tab" href="#" onclick="ShowStartWIPFields(this.value);" value="">Start-WIP</a></li>
-    <li><a data-toggle="tab" href="#" onclick="ShowOwnerAddEditCommentFields(this.value);" value="">OWNR-Add/Edit
+    <li><a data-toggle="tab" href="#" onclick="ShowOwnerAddEditCommentFields(this.value);" value="">Author-Add/Edit
             Comments</a></li>
     <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Raising Illu
@@ -90,18 +90,21 @@ $_SESSION['SELECTED_WO_ID'] = $_GET["u"]; //Getting ID of selected WO
 
 <h3><b>Associated Illustration</b></h3>
 <br><br>
-<div class="container-fluid">
+<div class="container-fluid" style="overflow-x:auto">
     <table id="StatusTable">
         <tr>
+            <th style="width:60px;">Info</th>
             <th>ATA Number</th>
             <th>IO No</th>
             <th>Status</th>
             <th>Illustrator</th>
+            <th>Graphic Id (OLD)</th>
             <th>Type</th>
             <th>Alloted Date</th>
             <th>Required Date</th>
             <th>Reviewer</th>
-            <th style="width:60px;">Info</th>
+            <th>Author Remarks</th>
+            <th>Illustrator Remarks</th>
         </tr>
 
         <?php
@@ -111,16 +114,19 @@ $_SESSION['SELECTED_WO_ID'] = $_GET["u"]; //Getting ID of selected WO
         while ($row = mysqli_fetch_array($result))
         { ?>
             <tr>
+                <td><input type="radio" name="DisplayAssIoButtons" value="<?php echo $row["IO_ID"]; ?>"
+                           onclick="ShowAssociatedIoTab(this.value);"></td>
                 <td><?php echo $row["ATA Number"]; ?></td>
                 <td><?php echo $row["IO No"]; ?></td>
                 <td><?php echo $row["Status"]; ?></td>
                 <td><?php echo $row["Illustrator"]; ?></td>
+                <td><?php echo $row["Graphic ID Old"]; ?></td>
                 <td><?php echo $row["Type"]; ?></td>
                 <td><?php echo $row["IO allotted date"]; ?></td>
                 <td><?php echo $row["IO required date"]; ?></td>
                 <td><?php echo $row["Reviewer"]; ?></td>
-                <td><input type="radio" name="DisplayAssIoButtons" value="<?php echo $row["IO_ID"]; ?>"
-                           onclick="ShowAssociatedIoTab(this.value);"></td>
+                <td><?php echo $row["Remarks"]; ?></td>
+                <td><?php echo $row["IlluRemarks"]; ?></td>
             </tr>
             <?php
         } ?>

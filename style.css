@@ -9,14 +9,12 @@ body {
 }
 
 input[type=text], input[type=file], select, textarea {
-    width: 70%;
-    padding: 12px;
     border: 1px solid #ccc;
     border-radius: 6px;
-    box-sizing: border-box;
-    resize: vertical;
-    margin-left: auto;
-    margin-right: auto;
+    overflow: auto;
+    width: 70ch;
+    white-space: nowrap;
+    padding: 10px;
 }
 
 input[type=submit] {
@@ -34,7 +32,6 @@ input[type=submit]:hover {
     color: black;
 }
 
-
 .nav > li > a {
     font-size: 18px;
     background-color: #e3f2fd;
@@ -49,7 +46,6 @@ input[type=submit]:hover {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
-    table-layout: fixed;
     border-style: solid groove;
     margin-top: 5%;
 }

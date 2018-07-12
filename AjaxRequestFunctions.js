@@ -160,6 +160,7 @@ function ShowAssociatedWOIndi(str)
         xmlhttp.send();
     }
 }
+
 function ShowIOIndi(str)
 {
     if (str == "")
@@ -1478,131 +1479,162 @@ function ShowSendToOwnerFields(str)
     }
 }
 
+function LoggedOut(str)
+{
+    if (str == "")
+    {
+        document.getElementById("ProjectPage").innerHTML = "";
+        return;
+    }
+    else
+    {
+        if (window.XMLHttpRequest)
+        {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        }
+        else
+        {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function ()
+        {
+            if (this.readyState == 4 && this.status == 200)
+            {
+                document.getElementById("ProjectPage").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET", "Logout.php?r=" + str, true);
+        xmlhttp.send();
+    }
+}
+
 $(document).ready(function ()
 {
     $('body').click(function (event)
     {
 
-        if ($(event.target).is("#AddCustomerDeliveryDate"))
-        {
-            $("#AddCustomerDeliveryDate").datepicker({
-                showOn: 'focus',
-                minDate: null,
-                dateFormat: 'dd/mm/yy'
-            }).focus();
-        }
-        if ($(event.target).is("#AddWOAdatepicker"))
-        {
-            $("#AddWOAdatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'dd/mm/yy'}).focus();
-        }
+        // if ($(event.target).is("#AddCustomerDeliveryDate"))
+        // {
+        //     $("#AddCustomerDeliveryDate").datepicker({
+        //         showOn: 'focus',
+        //         minDate: null,
+        //         dateFormat: 'yy-mm-dd'
+        //     }).focus();
+        // }
+        // if ($(event.target).is("#AddWOAdatepicker"))
+        // {
+        //     $("#AddWOAdatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'yy-mm-dd'}).focus();
+        // }
         if ($(event.target).is("#EditWOAdatepicker"))
         {
-            $("#EditWOAdatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'dd/mm/yy'}).focus();
+            $("#EditWOAdatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'yy-mm-dd'}).focus();
         }
-        if ($(event.target).is("#AddSFCKPdatepicker"))
-        {
-            $("#AddSFCKPdatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'dd/mm/yy'}).focus();
-        }
+        // if ($(event.target).is("#AddSFCKPdatepicker"))
+        // {
+        //     $("#AddSFCKPdatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'yy-mm-dd'}).focus();
+        // }
         if ($(event.target).is(".EditSFCKPdatepicker"))
         {
-            $(".EditSFCKPdatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'dd/mm/yy'}).focus();
+            $(".EditSFCKPdatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'yy-mm-dd'}).focus();
         }
-        if ($(event.target).is("#AddPRQACPdatepicker"))
-        {
-            $("#AddPRQACPdatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'dd/mm/yy'}).focus();
-        }
+        // if ($(event.target).is("#AddPRQACPdatepicker"))
+        // {
+        //     $("#AddPRQACPdatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'yy-mm-dd'}).focus();
+        // }
         if ($(event.target).is(".EditPRQACPdatepicker"))
         {
-            $(".EditPRQACPdatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'dd/mm/yy'}).focus();
+            $(".EditPRQACPdatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'yy-mm-dd'}).focus();
         }
-        if ($(event.target).is("#AddIRQACPdatepicker"))
-        {
-            $("#AddIRQACPdatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'dd/mm/yy'}).focus();
-        }
+        // if ($(event.target).is("#AddIRQACPdatepicker"))
+        // {
+        //     $("#AddIRQACPdatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'yy-mm-dd'}).focus();
+        // }
         if ($(event.target).is(".EditIRQACPdatepicker"))
         {
-            $(".EditIRQACPdatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'dd/mm/yy'}).focus();
+            $(".EditIRQACPdatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'yy-mm-dd'}).focus();
         }
         if ($(event.target).is("#EditCDdatepicker"))
         {
-            $("#EditCDdatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'dd/mm/yy'}).focus();
+            $("#EditCDdatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'yy-mm-dd'}).focus();
         }
-        if ($(event.target).is("#Raiseddatepicker"))
-        {
-            $("#Raiseddatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'dd/mm/yy'}).focus();
-        }
-        if ($(event.target).is("#Requireddatepicker"))
-        {
-            $("#Requireddatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'dd/mm/yy'}).focus();
-        }
-        if ($(event.target).is("#Sdatepicker"))
-        {
-            $("#Sdatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'dd/mm/yy'}).focus();
-        }
-        if ($(event.target).is("#Receiveddatepicker"))
-        {
-            $("#Receiveddatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'dd/mm/yy'}).focus();
-        }
-        if ($(event.target).is("#CCCdatepicker"))
-        {
-            $("#CCCdatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'dd/mm/yy'}).focus();
-        }
-        if ($(event.target).is("#STCdatepicker"))
-        {
-            $("#STCdatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'dd/mm/yy'}).focus();
-        }
-        if ($(event.target).is("#SdatepickerIO"))
-        {
-            $("#SdatepickerIO").datepicker({showOn: 'focus', minDate: null, dateFormat: 'dd/mm/yy'}).focus();
-        }
-        if ($(event.target).is("#SdatepickerARIO"))
-        {
-            $("#SdatepickerARIO").datepicker({showOn: 'focus', minDate: null, dateFormat: 'dd/mm/yy'}).focus();
-        }
-        if ($(event.target).is("#Cdatepicker"))
-        {
-            $("#Cdatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'dd/mm/yy'}).focus();
-        }
-        if ($(event.target).is("#Rdatepicker"))
-        {
-            $("#Rdatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'dd/mm/yy'}).focus();
-        }
-        if ($(event.target).is("#STOdatepicker"))
-        {
-            $("#STOdatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'dd/mm/yy'}).focus();
-        }
-        if ($(event.target).is("#RaisedDate"))
-        {
-            $("#RaisedDate").datepicker({showOn: 'focus', minDate: null, dateFormat: 'dd/mm/yy'}).focus();
-        }
-        if ($(event.target).is("#RequiredDate"))
-        {
-            $("#RequiredDate").datepicker({showOn: 'focus', minDate: null, dateFormat: 'dd/mm/yy'}).focus();
-        }
+        // if ($(event.target).is("#Raiseddatepicker"))
+        // {
+        //     $("#Raiseddatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'yy-mm-dd'}).focus();
+        // }
+        // if ($(event.target).is("#Requireddatepicker"))
+        // {
+        //     $("#Requireddatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'yy-mm-dd'}).focus();
+        // }
+        // if ($(event.target).is("#Sdatepicker"))
+        // {
+        //     $("#Sdatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'yy-mm-dd'}).focus();
+        // }
+        // if ($(event.target).is("#Receiveddatepicker"))
+        // {
+        //     $("#Receiveddatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'yy-mm-dd'}).focus();
+        // }
+        // if ($(event.target).is("#CCCdatepicker"))
+        // {
+        //     $("#CCCdatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'yy-mm-dd'}).focus();
+        // }
+        // if ($(event.target).is("#STCdatepicker"))
+        // {
+        //     $("#STCdatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'yy-mm-dd'}).focus();
+        // }
+        // if ($(event.target).is("#SdatepickerIO"))
+        // {
+        //     $("#SdatepickerIO").datepicker({showOn: 'focus', minDate: null, dateFormat: 'yy-mm-dd'}).focus();
+        // }
+        // if ($(event.target).is("#SdatepickerARIO"))
+        // {
+        //     $("#SdatepickerARIO").datepicker({showOn: 'focus', minDate: null, dateFormat: 'yy-mm-dd'}).focus();
+        // }
+        // if ($(event.target).is("#Cdatepicker"))
+        // {
+        //     $("#Cdatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'yy-mm-dd'}).focus();
+        // }
+        // if ($(event.target).is("#Rdatepicker"))
+        // {
+        //     $("#Rdatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'yy-mm-dd'}).focus();
+        // }
+        // if ($(event.target).is("#STOdatepicker"))
+        // {
+        //     $("#STOdatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'yy-mm-dd'}).focus();
+        // }
+        // if ($(event.target).is("#RaisedDate"))
+        // {
+        //     $("#RaisedDate").datepicker({showOn: 'focus', minDate: null, dateFormat: 'yy-mm-dd'}).focus();
+        // }
+        // if ($(event.target).is("#RequiredDate"))
+        // {
+        //     $("#RequiredDate").datepicker({showOn: 'focus', minDate: null, dateFormat: 'yy-mm-dd'}).focus();
+        // }
         if ($(event.target).is("#EditWOAdatepicker"))
         {
-            $("#EditWOAdatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'dd/mm/yy'}).focus();
+            $("#EditWOAdatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'yy-mm-dd'}).focus();
         }
         if ($(event.target).is("#EditSFCKPdatepicker"))
         {
-            $("#EditSFCKPdatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'dd/mm/yy'}).focus();
+            $("#EditSFCKPdatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'yy-mm-dd'}).focus();
         }
         if ($(event.target).is("#EditPRQACPdatepicker"))
         {
-            $("#EditPRQACPdatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'dd/mm/yy'}).focus();
+            $("#EditPRQACPdatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'yy-mm-dd'}).focus();
         }
         if ($(event.target).is("#EditIRQACPdatepicker"))
         {
-            $("#EditIRQACPdatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'dd/mm/yy'}).focus();
+            $("#EditIRQACPdatepicker").datepicker({showOn: 'focus', minDate: null, dateFormat: 'yy-mm-dd'}).focus();
         }
-        if ($(event.target).is("#AddStartDate"))
-        {
-            $("#AddStartDate").datepicker({showOn: 'focus', minDate: null, dateFormat: 'dd/mm/yy'}).focus();
-        }
-        if ($(event.target).is("#AddCompletionDate"))
-        {
-            $("#AddCompletionDate").datepicker({showOn: 'focus', minDate: null, dateFormat: 'dd/mm/yy'}).focus();
-        }
+        // if ($(event.target).is("#AddStartDate"))
+        // {
+        //     $("#AddStartDate").datepicker({showOn: 'focus', minDate: null, dateFormat: 'yy-mm-dd'}).focus();
+        // }
+        // if ($(event.target).is("#AddCompletionDate"))
+        // {
+        //     $("#AddCompletionDate").datepicker({showOn: 'focus', minDate: null, dateFormat: 'yy-mm-dd'}).focus();
+        // }
     });
 });
 
@@ -1621,14 +1653,10 @@ $(document).ready(function ()
             var FormId = "#PostAddProject";
             var Partner = $("#AddPartner").val();
             var Project = $("#AddProject").val();
-            var Manual = $("#AddManual").val();
-            var DescriptionTitle = $("#AddDescriptionTitle").val();
-            var TypeofWork = $("#AddTypeofWork").val();
-            var CustomerDeliveryDate = $("#AddCustomerDeliveryDate").val();
             var Remarks = $("#AddRemarks").val();
 
             // Returns successful data submission message when the entered information is stored in database.
-            var dataString = 'Partner=' + Partner + '&Project=' + Project + '&Manual=' + Manual + '&DescriptionTitle=' + DescriptionTitle + '&TypeofWork=' + TypeofWork + '&CustomerDeliveryDate=' + CustomerDeliveryDate + '&Remarks=' + Remarks;
+            var dataString = 'Partner=' + Partner + '&Project=' + Project + '&Remarks=' + Remarks;
         }
         //Edit Project Page Comments
         if ($(event.target).is("#PostEditProject"))
@@ -1640,17 +1668,12 @@ $(document).ready(function ()
             {
                 var EditPartner = $("#EditPartner").val();
                 var EditProject = $("#EditProject").val();
-                var EditManual = $("#EditManual").val();
-                var EditTarget = $("#EditTarget").val();
-                var EditDescriptionTitle = $("#EditDescription").val();
-                var EditTypeofWork = $("#EditTypeOfWork").val();
-                var EditCustomerDeliveryDate = $("#EditCDdatepicker").val();
                 var EditRemarks = $("#EditRemarks").val();
             }
             var SelectedProject = $("#SelectedProject").val();
             //window.alert(SelectedProject)
             // Returns successful data submission message when the entered information is stored in database.
-            var dataString = 'EditPartner=' + EditPartner + '&EditProject=' + EditProject + '&EditManual=' + EditManual + '&EditTarget=' + EditTarget + '&EditDescriptionTitle=' + EditDescriptionTitle + '&EditTypeofWork=' + EditTypeofWork + '&EditCustomerDeliveryDate=' + EditCustomerDeliveryDate + '&EditRemarks=' + EditRemarks;
+            var dataString = 'EditPartner=' + EditPartner + '&EditProject=' + EditProject + '&EditManual=' + '&EditRemarks=' + EditRemarks;
             //alert(dataString);
         }
 
@@ -1669,9 +1692,13 @@ $(document).ready(function ()
             var AddIR = $("#AddIR").val();
             var AddIRQACPdatepicker = $("#AddIRQACPdatepicker").val();
             var SelectedProject = $("#SelectedProject").val();
-
+            var Manual = $("#AddManual").val();
+            var DescriptionTitle = $("#AddDescriptionTitle").val();
+            var TypeofWork = $("#AddTypeofWork").val();
+            var CustomerDeliveryDate = $("#AddCustomerDeliveryDate").val();
+            var AddTarget = $("#AddTarget").val();
             // Returns successful data submission message when the entered information is stored in database.
-            var dataString = 'AddWONo=' + AddWONo + '&AddATANumber=' + AddATANumber + '&AddOwner=' + AddOwner + '&AddWOAdatepicker=' + AddWOAdatepicker + '&AddSFCKPdatepicker=' + AddSFCKPdatepicker + '&AddPR=' + AddPR + '&AddPRQACPdatepicker=' + AddPRQACPdatepicker + '&AddIR=' + AddIR + '&AddIRQACPdatepicker=' + AddIRQACPdatepicker + '&SelectedProject=' + SelectedProject;
+            var dataString = 'AddWONo=' + AddWONo + '&AddATANumber=' + AddATANumber + '&AddOwner=' + AddOwner + '&AddWOAdatepicker=' + AddWOAdatepicker + '&AddSFCKPdatepicker=' + AddSFCKPdatepicker + '&AddPR=' + AddPR + '&AddPRQACPdatepicker=' + AddPRQACPdatepicker + '&AddIR=' + AddIR + '&AddIRQACPdatepicker=' + AddIRQACPdatepicker + '&SelectedProject=' + SelectedProject + '&Manual=' + Manual + '&DescriptionTitle=' + DescriptionTitle + '&TypeofWork=' + TypeofWork + '&CustomerDeliveryDate=' + CustomerDeliveryDate + '&AddTarget=' + AddTarget;
         }
 
         //Edit WO Page
@@ -1690,18 +1717,24 @@ $(document).ready(function ()
                 var EditPRQACPdatepicker = $("#EditPRQACPdatepicker").val();
                 var EditIR = $("#EditIR").val();
                 var EditIRQACPdatepicker = $("#EditIRQACPdatepicker").val();
+                var EditManual = $("#EditManual").val();
+                var EditTarget = $("#EditTarget").val();
+                var EditDescriptionTitle = $("#EditDescription").val();
+                var EditTypeofWork = $("#EditTypeOfWork").val();
+                var EditCustomerDeliveryDate = $("#EditCDdatepicker").val();
             }
             var SelectedWO = $("#ID").val();
             var SelectedProject = $("#SelectedProject").val();
 
             // Returns successful data submission message when the entered information is stored in database.
-            var dataString = 'EditWONo=' + EditWONo + '&EditATANumber=' + EditATANumber + '&EditOwner=' + EditOwner + '&EditWOAdatepicker=' + EditWOAdatepicker + '&EditSFCKPdatepicker=' + EditSFCKPdatepicker + '&EditPR=' + EditPR + '&EditPRQACPdatepicker=' + EditPRQACPdatepicker + '&EditIR=' + EditIR + '&EditIRQACPdatepicker=' + EditIRQACPdatepicker + '&SelectedProject=' + SelectedProject + '&SelectedWO=' + SelectedWO;
+            var dataString = 'EditWONo=' + EditWONo + '&EditATANumber=' + EditATANumber + '&EditOwner=' + EditOwner + '&EditWOAdatepicker=' + EditWOAdatepicker + '&EditSFCKPdatepicker=' + EditSFCKPdatepicker + '&EditPR=' + EditPR + '&EditPRQACPdatepicker=' + EditPRQACPdatepicker + '&EditIR=' + EditIR + '&EditIRQACPdatepicker=' + EditIRQACPdatepicker + '&SelectedWO=' + SelectedWO + "&EditManual=" + EditManual + '&EditTarget=' + EditTarget + '&EditDescriptionTitle=' + EditDescriptionTitle + '&EditTypeofWork=' + EditTypeofWork + '&EditCustomerDeliveryDate=' + EditCustomerDeliveryDate;
             //alert(dataString);
         }
 
         if ($(event.target).is("#PostAddIllu"))
         {
             var FormId = "#PostAddIllu";
+            var AddIONO = $('#IONO').val();
             var AddIllu = $('#Illustrator').val();
             var AddReviewer = $('#Reviewer').val();
             var AddGraphicID = $('#GraphicID').val();
@@ -1710,7 +1743,7 @@ $(document).ready(function ()
             var AddRaisedDate = $('#Raiseddatepicker').val();
             var AddRequiredDate = $('#Requireddatepicker').val();
 
-            var dataString = 'AddIllu=' + AddIllu + '&AddReviewer=' + AddReviewer + '&AddGraphicID=' + AddGraphicID + '&AddType=' + AddType + '&AddRemarksIllu=' + AddRemarksIllu + '&AddRaisedDate=' + AddRaisedDate + '&AddRequiredDate=' + AddRequiredDate;
+            var dataString = 'AddIllu=' + AddIllu + '&AddIONO=' + AddIONO + '&AddReviewer=' + AddReviewer + '&AddGraphicID=' + AddGraphicID + '&AddType=' + AddType + '&AddRemarksIllu=' + AddRemarksIllu + '&AddRaisedDate=' + AddRaisedDate + '&AddRequiredDate=' + AddRequiredDate;
             //alert(dataString);
 
         }
@@ -1898,7 +1931,7 @@ $(document).ready(function ()
             //alert(dataString);
         }
 
-        if ($(event.target).is("#PostAddCSTMRQA"))
+        if ($(event.target).is("#PostAddDraftDelivery"))
         {
             var FormId = "#PostAddCSTMRQA";
             var extReceivedDate = $("#Receiveddatepicker").val();
@@ -1924,6 +1957,12 @@ $(document).ready(function ()
             var FormId = "#PostAcceptCSTMRQA";
 
             var dataString = 'AcceptCSTMRQA'
+        }
+        if ($(event.target).is("#PostAcceptOWNERQA"))
+        {
+            var FormId = "#PostAcceptOWNERQA";
+
+            var dataString = 'AcceptOWNERQA'
         }
 
         if ($(event.target).is("#PostCSTMRComment"))

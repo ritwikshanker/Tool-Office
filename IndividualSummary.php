@@ -34,10 +34,6 @@ include 'connect.php';
             <th style="width:60px;">Info</th>
             <th>Partner</th>
             <th>Project</th>
-            <th>Manual</th>
-            <th>Description / Title</th>
-            <th>Type of Work</th>
-            <th>Customer Delivery Date</th>
             <th>Remarks</th>
             <!--<th>ID</th> -->
         </tr>
@@ -52,10 +48,6 @@ include 'connect.php';
                            onclick="ShowAssociatedWOIndi(this.value);"></td>
                 <td><?php echo $row["Partner"]; ?></td>
                 <td><?php echo $row["Project"]; ?></td>
-                <td><?php echo $row["Manual"]; ?></td>
-                <td><?php echo $row["Description"]; ?></td>
-                <td><?php echo $row["Type of Work"]; ?></td>
-                <td><?php echo $row["Customer Delivery Date"]; ?></td>
                 <td><?php echo $row["Remarks"]; ?></td>
                 <!--<td><?php //echo $row["ID"];
                 ?></td>-->

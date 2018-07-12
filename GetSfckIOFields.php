@@ -20,33 +20,33 @@ include 'connect.php';
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href = "style.css" rel= "stylesheet" type= "text/css"/>
-    
-</head> 
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+
+</head>
 <body>
 <form action="" method="POST" id="PostAddSFCKIO" role="form">
-    <div class = "container-fluid">
+    <div class="container-fluid">
         <table class="table">
             <tr>
                 <th>SFCK</th>
                 <td>
-                    <select type = "text" name = "SFCK" id = "SFCKVal">
+                    <select type="text" name="SFCK" id="SFCKVal">
                         <option selected>Select SFCK</option>
-                        <option value = "SFCK-Completed">Illustrator SFCK</option>
-                        <option value = "RV COMNTS SFCK">Reviewer Comment SFCK </option>
-                        <option value = "OR COMNTS SFCK">Owner Comment SFCK</option>
+                        <option value="SFCK-Completed">Illustrator SFCK</option>
+                        <option value="RV COMNTS SFCK">Reviewer Comment SFCK</option>
+                        <option value="OWNER COMNTS SFCK">Owner Comment SFCK</option>
                     </select>
                 </td>
             </tr>
-            
+
             <tr>
                 <th>Submission Date</th>
-                <td><input type = "text" id = "SdatepickerIO" name = "SubmissionDate"></td>
+                <td><input type="date" id="SdatepickerIO" name="SubmissionDate"></td>
             </tr>
-            
+
         </table>
-        
-        <input style = "margin-left:35%;" type = "submit" name = "SubmitSFCK" value = "Submit">
+
+        <input style="margin-left:35%;" type="submit" name="SubmitSFCK" value="Submit">
     </div>
 </form>
 <br><br>

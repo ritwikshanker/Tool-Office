@@ -39,22 +39,6 @@ include 'connect.php';
                 <td><input type="text" name="Project" id="AddProject" required></td>
             </tr>
             <tr>
-                <th>Manual</th>
-                <td><input type="text" name="Manual" id="AddManual" required></td>
-            </tr>
-            <tr>
-                <th>Description / Title</th>
-                <td><input type="text" name="DescriptionTitle" id="AddDescriptionTitle" required></td>
-            </tr>
-            <tr>
-                <th>Type of Work</th>
-                <td><input type="text" name="TypeofWork" id="AddTypeofWork" required></td>
-            </tr>
-            <tr>
-                <th>Customer Delivery Date</th>
-                <td><input type="text" name="CustomerDeliveryDate" id="AddCustomerDeliveryDate" required></td>
-            </tr>
-            <tr>
                 <th>Remarks</th>
                 <td><input type="text" name="Remarks" id="AddRemarks"></td>
             </tr>

@@ -15,12 +15,12 @@
 
 </head>
 <body>
-<form action="" method="POST" id="PostAddCSTMRQA" role="form">
+<form action="" method="POST" id="PostAddDraftDelivery" role="form">
     <div class="container-fluid">
         <table class="table">
             <tr>
-                <th>Received Date</th>
-                <td><input type="text" id="Receiveddatepicker" name="ReceivedDate"></td>
+                <th>Send Date</th>
+                <td><input type="date" id="Receiveddatepicker" name="ReceivedDate"></td>
             </tr>
 
         </table>

@@ -11,6 +11,7 @@
  * Time: 09:48
  */
 include 'connect.php';
+session_start();
 $_SESSION["SELECTED_WOTeam"] = $_GET["abc"];
 $WO_ID = $_SESSION["SELECTED_WOTeam"];
 ?>

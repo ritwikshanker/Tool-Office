@@ -33,15 +33,15 @@ $IO_ID = $_SESSION["SELECTED_IO_ID"];
         <label>Remarks for the WO : </label>
         <br>
         <?php
-        $sql = "SELECT `Remarks` FROM `wo_raisingillustration` WHERE `IO_ID` = '$IO_ID'";
+        $sql = "SELECT `IlluRemarks` FROM `wo_raisingillustration` WHERE `IO_ID` = '$IO_ID'";
         $result = mysqli_query($conn, $sql);
         $num_rows = mysqli_num_rows($result);
         while ($row = mysqli_fetch_array($result))
         {
-            $remarks = $row["Remarks"];
+            $remarks = $row["IlluRemarks"];
         }
         ?>
-        <textarea type="text" name="Remarks" id="AddIlluRem"><?php echo $remarks; ?></textarea>
+        <textarea name="Remarks" id="AddIlluRem" title="Remarks"><?php echo $remarks; ?></textarea>
         <br><br>
         <input type="submit" name="SaveRemarks" value="Save Remarks" style="margin-left:29%;">
     </div>

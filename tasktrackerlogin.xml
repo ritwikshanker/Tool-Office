@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+- phpMyAdmin XML Dump
+- version 4.7.4
+- https://www.phpmyadmin.net
+-
+- Host: 127.0.0.1
+- Generation Time: Jul 12, 2018 at 01:18 PM
+- Server version: 10.1.26-MariaDB
+- PHP Version: 7.1.9
+-->
+
+<pma_xml_export version="1.0" xmlns:pma="https://www.phpmyadmin.net/some_doc_url/">
+    <!--
+    - Structure schemas
+    -->
+    <pma:structure_schemas>
+        <pma:database name="tasktrackerlogin" collation="latin1_swedish_ci" charset="latin1">
+            <pma:table name="employee_details">
+                CREATE TABLE `employee_details` (
+                  `ID` int(11) NOT NULL AUTO_INCREMENT,
+                  `Emp_Id` text NOT NULL,
+                  `Emp_Password` text NOT NULL,
+                  `Name` text NOT NULL,
+                  `Designation` text NOT NULL,
+                  `Email_Id` text NOT NULL,
+                  `Team` text NOT NULL,
+                  `Access` text NOT NULL,
+                  PRIMARY KEY (`ID`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+            </pma:table>
+        </pma:database>
+    </pma:structure_schemas>
+
+    <!--
+    - Database: 'tasktrackerlogin'
+    -->
+    <database name="tasktrackerlogin">
+        <!-- Table employee_details -->
+        <table name="employee_details">
+            <column name="ID">1</column>
+            <column name="Emp_Id">37075</column>
+            <column name="Emp_Password">password</column>
+            <column name="Name">Vadivel Manickam</column>
+            <column name="Designation">Manager</column>
+            <column name="Email_Id">Vadivel.Manickam@esterline.com</column>
+            <column name="Team">ECCS</column>
+            <column name="Access">1</column>
+        </table>
+        <table name="employee_details">
+            <column name="ID">2</column>
+            <column name="Emp_Id">48675</column>
+            <column name="Emp_Password">password</column>
+            <column name="Name">Mohan Kanathur Shivanna</column>
+            <column name="Designation">Author/ Reviewer</column>
+            <column name="Email_Id">Mohan.ks@esterline.com</column>
+            <column name="Team">ECCS</column>
+            <column name="Access">5</column>
+        </table>
+        <table name="employee_details">
+            <column name="ID">3</column>
+            <column name="Emp_Id">48989</column>
+            <column name="Emp_Password">password</column>
+            <column name="Name">Aswini Sirela</column>
+            <column name="Designation">Author/ Reviewer</column>
+            <column name="Email_Id">Aswini.Sirela@esterline.com</column>
+            <column name="Team">ECCS</column>
+            <column name="Access">5</column>
+        </table>
+        <table name="employee_details">
+            <column name="ID">4</column>
+            <column name="Emp_Id">46839</column>
+            <column name="Emp_Password">password</column>
+            <column name="Name">Kiran Hatti</column>
+            <column name="Designation">Author/ Reviewer</column>
+            <column name="Email_Id">kiran.hatti@esterline.com</column>
+            <column name="Team">ECCS</column>
+            <column name="Access">5</column>
+        </table>
+        <table name="employee_details">
+            <column name="ID">5</column>
+            <column name="Emp_Id">52471</column>
+            <column name="Emp_Password">password</column>
+            <column name="Name">Appasaheb Birajdar</column>
+            <column name="Designation">Illustrator / Reviewer</column>
+            <column name="Email_Id">Appasaheb.B@esterline.com</column>
+            <column name="Team">ECCS</column>
+            <column name="Access">6</column>
+        </table>
+        <table name="employee_details">
+            <column name="ID">6</column>
+            <column name="Emp_Id">52253</column>
+            <column name="Emp_Password">password</column>
+            <column name="Name">Nikhil Manikandan</column>
+            <column name="Designation">Author/ Reviewer</column>
+            <column name="Email_Id">nikhil.manikandan@esterline.com</column>
+            <column name="Team">ECCS</column>
+            <column name="Access">5</column>
+        </table>
+        <table name="employee_details">
+            <column name="ID">7</column>
+            <column name="Emp_Id">47532</column>
+            <column name="Emp_Password">password</column>
+            <column name="Name">Pavan Kumar Chimbili</column>
+            <column name="Designation">Author/ Reviewer</column>
+            <column name="Email_Id">pavan.chimbili@esterline.com</column>
+            <column name="Team">ECCS</column>
+            <column name="Access">5</column>
+        </table>
+        <table name="employee_details">
+            <column name="ID">8</column>
+            <column name="Emp_Id">37492</column>
+            <column name="Emp_Password">password</column>
+            <column name="Name">Rashmi Ranjan Senapati</column>
+            <column name="Designation">Author/ Reviewer</column>
+            <column name="Email_Id">ranjan.sena@esterline.com</column>
+            <column name="Team">ECCS</column>
+            <column name="Access">5</column>
+        </table>
+        <table name="employee_details">
+            <column name="ID">9</column>
+            <column name="Emp_Id">46845</column>
+            <column name="Emp_Password">password</column>
+            <column name="Name">Saurav Purkayastha</column>
+            <column name="Designation">Author/ Reviewer</column>
+            <column name="Email_Id">Saurav.Purkayastha@esterline.com</column>
+            <column name="Team">ECCS</column>
+            <column name="Access">5</column>
+        </table>
+        <table name="employee_details">
+            <column name="ID">10</column>
+            <column name="Emp_Id">54084</column>
+            <column name="Emp_Password">password</column>
+            <column name="Name">Praveen Raj</column>
+            <column name="Designation">Author/ Reviewer</column>
+            <column name="Email_Id">praveen.raj@esterline.com</column>
+            <column name="Team">ECCS</column>
+            <column name="Access">5</column>
+        </table>
+        <table name="employee_details">
+            <column name="ID">11</column>
+            <column name="Emp_Id">54173</column>
+            <column name="Emp_Password">password</column>
+            <column name="Name">Gautham Arumugam Gayathridevi</column>
+            <column name="Designation">Author/ Reviewer</column>
+            <column name="Email_Id">gautham.arumugam@esterline.com</column>
+            <column name="Team">ECCS</column>
+            <column name="Access">5</column>
+        </table>
+        <table name="employee_details">
+            <column name="ID">12</column>
+            <column name="Emp_Id">54980</column>
+            <column name="Emp_Password">password</column>
+            <column name="Name">B. Rajendra Prasad</column>
+            <column name="Designation">Author/ Reviewer</column>
+            <column name="Email_Id">Rajendra.Prasad@esterline.com</column>
+            <column name="Team">ECCS</column>
+            <column name="Access">5</column>
+        </table>
+        <table name="employee_details">
+            <column name="ID">13</column>
+            <column name="Emp_Id">1</column>
+            <column name="Emp_Password">taskadmin</column>
+            <column name="Name">admin</column>
+            <column name="Designation">admin</column>
+            <column name="Email_Id">admin</column>
+            <column name="Team">Admin</column>
+            <column name="Access">0</column>
+        </table>
+    </database>
+</pma_xml_export>

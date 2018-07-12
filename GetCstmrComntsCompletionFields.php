@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,17 +11,17 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href = "style.css" rel= "stylesheet" type= "text/css"/>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
 
-</head> 
+</head>
 <body>
 <form action="" method="POST" id="PostCSTMRComment" role="form">
-    <div class = "container" style = "margin-top:5%;">
+    <div class="container" style="margin-top:5%;">
         <label> Select the Date</label>
         <br>
-        <input type = "text" id = "CCCdatepicker" name = "Date" required>
+        <input type="date" id="CCCdatepicker" name="Date" required title="Date">
         <br><br>
-        <input style = "margin-left:25%;" type = "submit" name = "CustomerCommentsCompletion" value = "Customer Comments Completion">
+        <input style="margin-left:25%;" type="submit" name="Shop Verification" value="Shop Verification">
     </div>
 </form>
 <br><br>

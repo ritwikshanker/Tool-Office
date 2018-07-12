@@ -20,7 +20,7 @@
     <div class="container" style="margin-top:5%;">
         <label> Select the Date</label>
         <br>
-        <input type="text" id="STOdatepicker" name="Date">
+        <input type="date" id="STOdatepicker" name="Date">
         <br><br>
         <input style="margin-left:25%;" type="submit" name="SendToOwner" value="Send To Owner">
     </div>

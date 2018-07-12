@@ -23,13 +23,12 @@ $Seleted_Prj = $_SESSION["SELECTED_PRJ"];
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-
     <link href="style.css" rel="stylesheet" type="text/css"/>
 
 </head>
 <body>
 
-<div class="container-fluid">
+<div class="container-fluid" style="overflow-x:auto">
     <table id="StatusTable">
         <tr>
             <th style="width:60px;">Info</th>
@@ -37,7 +36,10 @@ $Seleted_Prj = $_SESSION["SELECTED_PRJ"];
             <th>ATA Number</th>
             <th>WO No</th>
             <th>Status</th>
-            <th>Owner</th>
+            <th>Manual</th>
+            <th>Description / Title</th>
+            <th>Type of Work</th>
+            <th>Author</th>
             <th>WO Allotted date</th>
             <th>Start Date</th>
             <th>SFCK Date- Planned</th>
@@ -45,7 +47,9 @@ $Seleted_Prj = $_SESSION["SELECTED_PRJ"];
             <th>Peer QA Completion Date- Planned</th>
             <th>Internal Reviewer</th>
             <th>Internal QA Completion Date- Planned</th>
+            <th>Customer Delivery Date</th>
             <th>Remarks</th>
+
             <!--            <th>Partner/Customer QA Comments Received Date</th>-->
             <!--            <th> Partner/Customer QA Re-submission Date</th>-->
         </tr>
@@ -58,7 +62,8 @@ $Seleted_Prj = $_SESSION["SELECTED_PRJ"];
         }
         else
         {
-            $sql = "SELECT * FROM `associated_wos` WHERE (`Project` = '$Seleted_Prj' AND (`OID` = '$empid' OR `PRID` = '$empid' OR `IRID` = '$empid'))";
+            $sql = "SELECT * FROM `associated_wos` WHERE (`Project` = '$Seleted_Prj' AND 
+            (`OID` = '$empid' OR `PRID` = '$empid' OR `IRID` = '$empid' OR `IID` = '$empid'))";
         }
         //echo $sql;
         $result = mysqli_query($conn, $sql);
@@ -70,6 +75,9 @@ $Seleted_Prj = $_SESSION["SELECTED_PRJ"];
                 <td><?php echo $row["ATA Number"]; ?></td>
                 <td><?php echo $row["WO No"]; ?></td>
                 <td><?php echo $row["WO Status"]; ?></td>
+                <td><?php echo $row["Manual"]; ?></td>
+                <td><?php echo $row["Description"]; ?></td>
+                <td><?php echo $row["Type of Work"]; ?></td>
                 <td><?php echo $row["Owner"]; ?></td>
                 <td><?php echo $row["WO Allotted date"]; ?></td>
                 <td><?php echo $row["StartDate"]; ?></td>
@@ -78,6 +86,8 @@ $Seleted_Prj = $_SESSION["SELECTED_PRJ"];
                 <td><?php echo $row["Peer QA Completion Date- Planned"]; ?></td>
                 <td><?php echo $row["Internal Reviewer"]; ?></td>
                 <td><?php echo $row["Internal QA Completion Date- Planned"]; ?></td>
+                <td><?php echo $row["Customer Delivery Date"]; ?></td>
+
                 <td> <?php echo $row["Owner Remarks"]; ?></td>
                 <!--                <td>--><?php //echo $row["Customer CompletionDate"];
                 ?><!--</td>-->

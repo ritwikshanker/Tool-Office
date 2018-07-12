@@ -1,4 +1,3 @@
-
 <?php
 include 'connect.php';
 session_start();
@@ -20,7 +19,7 @@ $_SESSION["SELECTED_IO_ID"] = $_GET["az"];
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href = "style.css" rel= "stylesheet" type= "text/css"/>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
 
 </head>
 <body>
@@ -44,25 +43,32 @@ $_SESSION["SELECTED_IO_ID"] = $_GET["az"];
             </li>
             <li><a data-toggle="tab" href="#" onclick="CalculateReviewScoreIO(this.value);" value="">Calculate</a></li>
             <li><a data-toggle="tab" href="#" onclick="SubmitReviewIO(this.value);" value="">Submit</a></li>
-
         </ul>
     </li>
-
-    <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Owner - QA
-            <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-            <li><a data-toggle="tab" href="#" onclick="ShowEnterOwnerQAFields(this.value);" value="">Enter
-                    Comment/error</a></li>
-            <li><a data-toggle="tab" href="#" onclick="ShowAcceptOwnerQAFields(this.value);" value="">Accept QA</a></li>
-        </ul>
-    </li>
-    <li><a data-toggle="tab" href="#" onclick="ShowVandVIOFields(this.value);" value="">V & V</a></li>
-    <li><a data-toggle="tab" href="#" onclick="ShowSendToOwnerFields(this.value);" value="">Send To Owner</a></li>
-</ul>
+    <li><a data-toggle="tab" href="#" onclick="ShowSendToOwnerFields(this.value);" value="">Send To Author</a></li>
     <?php
-}
-?>
+    }
+    if ($_SESSION["AccessValue"] === '5' or $_SESSION["AccessValue"] === '0')
+    {
+    ?>
+    <ul class="nav nav-tabs nav-justified">
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Author - QA
+                <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a data-toggle="tab" href="#" onclick="ShowEnterOwnerQAFields(this.value);" value="">Enter
+                        Comment/error</a></li>
+                <li><a data-toggle="tab" href="#" onclick="ShowAcceptOwnerQAFields(this.value);" value="">Accept QA</a>
+                </li>
+            </ul>
+        </li>
+        <li><a data-toggle="tab" href="#" onclick="ShowVandVIOFields(this.value);" value="">V & V</a></li>
+
+        <?php
+        }
+        ?>
+    </ul>
+</ul>
 <div id="AssociatedilluProgress"></div>
 <br><br><br><br><br><br><br><br><br><br><br><br>
 </body>

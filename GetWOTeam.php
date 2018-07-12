@@ -44,7 +44,10 @@ $Seleted_Prj = $_SESSION["Selected_projectTeam"];
             <th>ATA Number</th>
             <th>WO No</th>
             <th>Status</th>
-            <th>Owner</th>
+            <th>Manual</th>
+            <th>Description / Title</th>
+            <th>Type of Work</th>
+            <th>Author</th>
             <th>WO Allotted date</th>
             <th>Start Date</th>
             <th>SFCK Date- Planned</th>
@@ -52,6 +55,7 @@ $Seleted_Prj = $_SESSION["Selected_projectTeam"];
             <th>Peer QA Completion Date- Planned</th>
             <th>Internal Reviewer</th>
             <th>Internal QA Completion Date- Planned</th>
+            <th>Customer Delivery Date</th>
             <th>Remarks</th>
             <!--            <th>Partner/Customer QA Comments Received Date</th>-->
             <!--            <th> Partner/Customer QA Re-submission Date</th>-->
@@ -69,6 +73,9 @@ $Seleted_Prj = $_SESSION["Selected_projectTeam"];
                 <td><?php echo $row["ATA Number"]; ?></td>
                 <td><?php echo $row["WO No"]; ?></td>
                 <td><?php echo $row["WO Status"]; ?></td>
+                <td><?php echo $row["Manual"]; ?></td>
+                <td><?php echo $row["Description"]; ?></td>
+                <td><?php echo $row["Type of Work"]; ?></td>
                 <td><?php echo $row["Owner"]; ?></td>
                 <td><?php echo $row["WO Allotted date"]; ?></td>
                 <td><?php echo $row["StartDate"]; ?></td>
@@ -77,6 +84,8 @@ $Seleted_Prj = $_SESSION["Selected_projectTeam"];
                 <td><?php echo $row["Peer QA Completion Date- Planned"]; ?></td>
                 <td><?php echo $row["Internal Reviewer"]; ?></td>
                 <td><?php echo $row["Internal QA Completion Date- Planned"]; ?></td>
+                <td><?php echo $row["Customer Delivery Date"]; ?></td>
+
                 <td> <?php echo $row["Owner Remarks"]; ?></td>
                 <!--                <td>--><?php //echo $row["Customer CompletionDate"];
                 ?><!--</td>-->

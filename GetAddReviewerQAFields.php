@@ -53,12 +53,12 @@ include 'connect.php';
             </tr>
             <tr>
                 <th>Start Date</th>
-                <td><input type="text" name="StartDate" id="AddStartDate"></td>
+                <td><input type="date" name="StartDate" id="AddStartDate"></td>
             </tr>
 
             <tr>
                 <th>Completion Date</th>
-                <td><input type="text" name="CompletionDate" id="AddCompletionDate"></td>
+                <td><input type="date" name="CompletionDate" id="AddCompletionDate"></td>
             </tr>
 
         </table>

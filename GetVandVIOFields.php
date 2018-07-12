@@ -83,10 +83,10 @@ include 'connect.php';
             while ($row1 = mysqli_fetch_array($result1))
             {
                 ?>
-                <td rowspan="<?php echo $num_rows + 1 ?>"><?php echo $row1["Score"]; ?></td>
-                <td rowspan="<?php echo $num_rows + 1 ?>"><?php echo $row1["ReviewStartDate"]; ?></td>
                 <td rowspan="<?php echo $num_rows + 1 ?>">---</td>
-                <td rowspan="<?php echo $num_rows + 1 ?>"><?php echo $row1["ReviewCompleteDate"]; ?></td>
+                <td rowspan="<?php echo $num_rows + 1 ?>">---</td>
+                <td rowspan="<?php echo $num_rows + 1 ?>">---</td>
+                <td rowspan="<?php echo $num_rows + 1 ?>">---</td>
                 <?php
             }
             ?>
@@ -94,9 +94,9 @@ include 'connect.php';
             while ($row = mysqli_fetch_array($result))
             { ?>
         <tr>
-            <td><?php echo $row["ErrorCode"]; ?></td>
-            <td><?php echo $row["ErrorDesc"]; ?></td>
-            <td><?php echo $row["Quantity"]; ?></td>
+            <td>---</td>
+            <td>---</td>
+            <td>---</td>
         </tr>
         <?php
         } ?>
@@ -107,18 +107,18 @@ include 'connect.php';
         $num_rows = mysqli_num_rows($result);
         ?>
         <tr>
-            <th rowspan="<?php echo $num_rows + 1; ?>">OWNER Review</th>
+            <th rowspan="<?php echo $num_rows + 1; ?>">Author Review</th>
             <?php
-            $select = "SELECT * FROM `io_ownerqa` WHERE `IO_ID` = '$IO_ID'";
+            $select = "SELECT * FROM `wo_raisingillustration` WHERE `IO_ID` = '$IO_ID'";
             $result1 = mysqli_query($conn, $select);
             $num_rows1 = mysqli_num_rows($result1);
             while ($row1 = mysqli_fetch_array($result1))
             {
                 ?>
-                <td rowspan="<?php echo $num_rows + 1 ?>"><?php echo $row1["Score"]; ?></td>
-                <td rowspan="<?php echo $num_rows + 1 ?>"><?php echo $row1["StartDate"]; ?></td>
                 <td rowspan="<?php echo $num_rows + 1 ?>">---</td>
-                <td rowspan="<?php echo $num_rows + 1 ?>"><?php echo $row1["CompletionDate"]; ?></td>
+                <td rowspan="<?php echo $num_rows + 1 ?>"><?php echo $row1["OwnerStartDate"]; ?></td>
+                <td rowspan="<?php echo $num_rows + 1 ?>"><?php echo $row1["OR_SFCKDate"]; ?></td>
+                <td rowspan="<?php echo $num_rows + 1 ?>"><?php echo $row1["OwnerSendDate"]; ?></td>
                 <?php
             }
             ?>

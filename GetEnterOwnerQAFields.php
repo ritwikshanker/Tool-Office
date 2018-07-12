@@ -49,7 +49,7 @@ include 'connect.php';
 
             <tr>
                 <th>Review Date</th>
-                <td><input type="text" id="Rdatepicker" name="ReviewDate"></td>
+                <td><input type="date" id="Rdatepicker" name="ReviewDate"></td>
             </tr>
 
         </table>

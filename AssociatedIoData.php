@@ -30,6 +30,8 @@ session_start();
 <div class="container-fluid">
     <table id="StatusTable">
         <tr>
+
+            <th style="width:60px;">Info</th>
             <th>Illustrator</th>
             <th>Reviewer</th>
             <th>Graphic ID (Old)</th>
@@ -38,7 +40,6 @@ session_start();
             <th>Alloted Date</th>
             <th>Required Date</th>
 
-            <th style="width:60px;">Info</th>
         </tr>
 
         <?php
@@ -50,12 +51,14 @@ session_start();
         }
         else
         {
-            $sql = "SELECT * FROM `wo_raisingillustration` WHERE (`WO_ID` = '$WO_ID' AND (`IID` = '$empid' OR `RID` = '$empid'))";
+            $sql = "SELECT * FROM `wo_raisingillustration` WHERE (`WO_ID` = '$WO_ID')";
         }
         $result = mysqli_query($conn, $sql);
         while ($row = mysqli_fetch_array($result))
         { ?>
             <tr>
+                <td><input type="radio" name="DisplayAssIoButtons" value="<?php echo $row["IO_ID"]; ?>"
+                           onclick="ShowEditRaisingIlluFields(this.value);"></td>
                 <td><?php echo $row["Illustrator"]; ?></td>
                 <td><?php echo $row["Reviewer"]; ?></td>
                 <td><?php echo $row["Graphic ID Old"]; ?></td>
@@ -63,8 +66,7 @@ session_start();
                 <td><?php echo $row["Remarks"]; ?></td>
                 <td><?php echo $row["IO allotted date"]; ?></td>
                 <td><?php echo $row["IO required date"]; ?></td>
-                <td><input type="radio" name="DisplayAssIoButtons" value="<?php echo $row["IO_ID"]; ?>"
-                           onclick="ShowEditRaisingIlluFields(this.value);"></td>
+
             </tr>
             <?php
         } ?>

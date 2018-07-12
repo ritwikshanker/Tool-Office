@@ -21,15 +21,15 @@ include 'connect.php';
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href = "style.css" rel= "stylesheet" type= "text/css"/>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
 
-</head> 
+</head>
 <body>
-    
-    <div class = "container-fluid"  style = "margin-top:5%;">
-        <input type = "submit" name = "AcceptOQA" value = "Accepted" style = "margin-left:25%;">
+<form id="PostAcceptOWNERQA">
+    <div class="container-fluid" style="margin-top:5%;">
+        <input type="submit" name="AcceptOQA" value="Accepted" style="margin-left:45%;">
     </div>
-
+</form>
 <br><br>
 
 </body>

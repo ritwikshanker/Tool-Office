@@ -7,8 +7,8 @@
 
 include 'connect.php';
 session_start();
-$_SESSION['SELECTED_IO_ID']= $_GET['y'];
-$y=$_SESSION['SELECTED_IO_ID'];
+$_SESSION['SELECTED_IO_ID'] = $_GET['y'];
+$qwe = $_SESSION['SELECTED_IO_ID'];
 ?>
 
 <!DOCTYPE html>
@@ -24,11 +24,12 @@ $y=$_SESSION['SELECTED_IO_ID'];
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href = "style.css" rel= "stylesheet" type= "text/css"/>
-	
-</head> 
-<body><form action="" method="POST" id="PostEditIllu" role="form">
-    <div class = "container-fluid">
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+
+</head>
+<body>
+<form action="" method="POST" id="PostEditIllu" role="form">
+    <div class="container-fluid">
         <table class="table">
             <tr>
                 <th>Illustrator</th>
@@ -38,31 +39,81 @@ $y=$_SESSION['SELECTED_IO_ID'];
                 <th>Remarks</th>
                 <th>Raised Date</th>
                 <th>Required Date</th>
-			</tr>
-			
+            </tr>
+
+            <?php
+            $sql = "SELECT * FROM `wo_raisingillustration` where `IO_ID` = '$qwe' ";
+            $result = mysqli_query($conn, $sql);
+            $num_rows = mysqli_num_rows($result);
+            while ($row = mysqli_fetch_array($result))
+            { ?>
+                <tr>
+                    <td><select name="Illustrator" id="Illustrator<?php $row["IO_ID"]; ?>" title="Illustrator">
+                            <!--                            <option value="--><?php //echo $row["Owner"];
+                            ?><!--" selected></option>-->
+                            <?php
+                            $rit = "SELECT Name FROM `employee_details` ORDER BY Name";
+                            $res = mysqli_query($conn, $rit);
+                            while ($rown = mysqli_fetch_array($res))
+                            {
+                                if ($row['Illustrator'] === $rown['Name'])
+                                {
+                                    ?>
+                                    <option selected><?php echo $rown['Name']; ?></option>
+                                    <?php
+                                }
+                                else
+                                {
+                                    ?>
+                                    <option><?php echo $rown['Name']; ?></option>
+                                    <?php
+                                }
+
+                            }
+                            ?>
+                        </select>
+                    <td><select name="Reviewer" title="Reviewer" id="Reviewer<?php $row["IO_ID"]; ?>">
+                            <?php
+                            $rit = "SELECT Name FROM `employee_details` ORDER BY Name";
+                            $res = mysqli_query($conn, $rit);
+                            while ($rown = mysqli_fetch_array($res))
+                            {
+                                if ($row['Reviewer'] === $rown['Name'])
+                                {
+                                    ?>
+                                    <option selected><?php echo $rown['Name']; ?></option>
+                                    <?php
+                                }
+                                else
+                                {
+                                    ?>
+                                    <option><?php echo $rown['Name']; ?></option>
+                                    <?php
+                                }
+
+                            }
+                            ?>
+                        </select>
+                    </td>
+                    <td><input type="text" id="GraphicIDOld<?php $row["IO_ID"]; ?>"
+                               Value="<?php echo $row["Graphic ID Old"]; ?>"></td>
+                    <td><input type="text" id="Type<?php $row["IO_ID"]; ?>" Value="<?php echo $row["Type"]; ?>"></td>
+                    <td><input type="text" id="Remarks<?php $row["IO_ID"]; ?>" Value="<?php echo $row["Remarks"]; ?>">
+                    </td>
+                    <td><input type="text" id="RaisedDate<?php $row["IO_ID"]; ?>"
+                               Value="<?php echo $row["IO allotted date"]; ?>"></td>
+                    <td><input type="text" id="RequiredDate<?php $row["IO_ID"]; ?>"
+                               Value="<?php echo $row["IO required date"]; ?>"></td>
+                </tr>
                 <?php
-                $sql="SELECT * FROM `wo_raisingillustration` where `IO_ID` = '$y' ";
-                $result = mysqli_query($conn,$sql);
-                $num_rows = mysqli_num_rows($result);
-                while ($row = mysqli_fetch_array($result)) {?>
-                    <tr>
-                        <td><input type = "text" id = "Illustrator<?php $row["IO_ID"]; ?>"             Value = "<?php echo $row["Illustrator"];?>"></td>
-                        <td><input type = "text" id = "Reviewer<?php $row["IO_ID"]; ?>"        Value = "<?php echo $row["Reviewer"];?>"></td>
-                        <td><input type = "text" id = "GraphicIDOld<?php $row["IO_ID"]; ?>"            Value = "<?php echo $row["Graphic ID Old"];?>"></td>
-                        <td><input type = "text" id = "Type<?php $row["IO_ID"]; ?>"    Value = "<?php echo $row["Type"];?>"  ></td>
-                        <td><input type = "text" id = "Remarks<?php $row["IO_ID"]; ?>"  Value = "<?php echo $row["Remarks"];?>"></td>
-                        <td><input type = "text" id = "RaisedDate<?php $row["IO_ID"]; ?>"               Value = "<?php echo $row["IO allotted date"];?>"></td>
-                        <td><input type = "text" id = "RequiredDate<?php $row["IO_ID"]; ?>" Value = "<?php echo $row["IO required date"];?>"></td>
-                	</tr>
-                <?php
-                }?>
+            } ?>
         </table>
         <br>
-        <input type = "hidden" id = "IORowsCount" value = "<?php echo $num_rows;?>">
-		<input type = "hidden" id = "SelectedIO" value = "<?php echo $_SESSION['SELECTED_IO_ID'];?>" >
-        <input style = "margin-left:35%;" type = "submit" name = "SubmitIllu" value = "SubmitIllu">
+        <input type="hidden" id="IORowsCount" value="<?php echo $num_rows; ?>">
+        <input type="hidden" id="SelectedIO" value="<?php echo $_SESSION['SELECTED_IO_ID']; ?>">
+        <input style="margin-left:35%;" type="submit" name="Submit Illustration" value="Submit Illustration">
     </div>
-	</form>
+</form>
 <br><br>
 
 </body>

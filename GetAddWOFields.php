@@ -41,7 +41,25 @@ session_start();
             </tr>
 
             <tr>
-                <th>OWNER</th>
+                <th>Manual</th>
+                <td><input type="text" name="Manual" id="AddManual" required></td>
+            </tr>
+
+            <tr>
+                <th>Description / Title</th>
+                <td><input type="text" name="DescriptionTitle" id="AddDescriptionTitle" required></td>
+            </tr>
+            <tr>
+                <th>Target</th>
+                <td><input type="text" name="Target" id="AddTarget" required></td>
+            </tr>
+            <tr>
+                <th>Type of Work</th>
+                <td><input type="text" name="TypeofWork" id="AddTypeofWork" required></td>
+            </tr>
+
+            <tr>
+                <th>Author</th>
                 <td>
                     <select name="owner" id="AddOwner" title="Owner">
                         <option selected disabled>--Select--</option>
@@ -61,12 +79,12 @@ session_start();
 
             <tr>
                 <th>WO Allotted Date</th>
-                <td><input type="text" name="WOAllottedDate" id="AddWOAdatepicker" required></td>
+                <td><input type="date" name="WOAllottedDate" id="AddWOAdatepicker" required></td>
             </tr>
 
             <tr>
                 <th>SFCK Date - Planned</th>
-                <td><input type="text" name="SFCKDatePlanned" id="AddSFCKPdatepicker"></td>
+                <td><input type="date" name="SFCKDatePlanned" id="AddSFCKPdatepicker"></td>
             </tr>
 
             <tr>
@@ -90,7 +108,7 @@ session_start();
 
             <tr>
                 <th>PR QA Completion Date - Planned</th>
-                <td><input type="text" name="PRQACompletionDatePlanned" id="AddPRQACPdatepicker"></td>
+                <td><input type="date" name="PRQACompletionDatePlanned" id="AddPRQACPdatepicker"></td>
             </tr>
 
             <tr>
@@ -114,7 +132,12 @@ session_start();
 
             <tr>
                 <th>IR QA Completion Date - Planned</th>
-                <td><input type="text" name="IRQACompletionDatePlanned" id="AddIRQACPdatepicker"></td>
+                <td><input type="date" name="IRQACompletionDatePlanned" id="AddIRQACPdatepicker"></td>
+            </tr>
+
+            <tr>
+                <th>Customer Delivery Date</th>
+                <td><input type="date" name="CustomerDeliveryDate" id="AddCustomerDeliveryDate" required></td>
             </tr>
 
         </table>

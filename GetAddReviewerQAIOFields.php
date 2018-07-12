@@ -20,43 +20,43 @@ include 'connect.php';
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href = "style.css" rel= "stylesheet" type= "text/css"/>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
 
-</head> 
+</head>
 
 <body>
 
 <form action="" method="POST" id="PostAddReviewerQAIOFields" role="form">
-    <div class = "container-fluid">
+    <div class="container-fluid">
         <table class="table">
             <tr>
                 <th>Error Code</th>
-                <td><input type = "text" name = "ErrorCode" id = "AddErrorCode"></td>
+                <td><input type="text" name="ErrorCode" id="AddErrorCode"></td>
             </tr>
-            
+
             <tr>
                 <th>Error Description</th>
-                <td><input type = "text" name = "ErrorDescription" id = "AddErrorDescription"></td>
+                <td><input type="text" name="ErrorDescription" id="AddErrorDescription"></td>
             </tr>
-            
+
             <tr>
                 <th>Quantity</th>
-                <td><input type = "text" name = "Quantity" id = "AddQuantity"></td>
+                <td><input type="text" name="Quantity" id="AddQuantity"></td>
             </tr>
-            
+
             <tr>
                 <th>Start Date</th>
-                <td><input type = "text" id = "SdatepickerARIO" name = "StartDate"></td>
+                <td><input type="date" id="SdatepickerARIO" name="StartDate"></td>
             </tr>
-            
+
             <tr>
                 <th>Completion Date</th>
-                <td><input type = "text" id = "Cdatepicker" name = "CompletionDate"></td>
+                <td><input type="date" id="Cdatepicker" name="CompletionDate"></td>
             </tr>
-            
+
         </table>
 
-        <input style = "margin-left:40%;" type = "submit" name = "SubmitRQA" value = "Submit">
+        <input style="margin-left:40%;" type="submit" name="SubmitRQA" value="Submit">
     </div>
 </form>
 <br><br>

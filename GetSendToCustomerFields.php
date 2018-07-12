@@ -20,7 +20,7 @@
     <div class="container" style="margin-top:5%;">
         <label> Select the Date</label>
         <br>
-        <input type="text" id="STCdatepicker" name="Date">
+        <input type="date" id="STCdatepicker" name="Date">
         <br><br>
         <input style="margin-left:25%;" type="submit" name="SendToCustomer" value="Send To Customer">
     </div>
