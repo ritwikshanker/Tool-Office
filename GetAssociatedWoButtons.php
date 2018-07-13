@@ -75,7 +75,7 @@ $_SESSION['SELECTED_WO_ID'] = $_GET["u"]; //Getting ID of selected WO
         <?php
     } ?>
     <li><a data-toggle="tab" href="#" onclick="ShowVandVFields(this.value);" value="">V & V Update</a></li>
-    <?php if ($_SESSION["AccessValue"] === '1')
+    <?php if ($_SESSION["AccessValue"] === '1' or $_SESSION["AccessValue"] === '0')
     {
         ?>
         <li><a data-toggle="tab" href="#" onclick="ShowSendToCustomerFields(this.value);" value="">Final Delivery</a>

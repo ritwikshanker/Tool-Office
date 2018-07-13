@@ -34,7 +34,6 @@ $WO_ID = $_SESSION["SELECTED_WOTeam"];
 
 </head>
 <body>
-<h3><b>Associated Illustration</b></h3>
 <br><br>
 <div class="container-fluid">
     <table id="StatusTable">
@@ -51,7 +50,7 @@ $WO_ID = $_SESSION["SELECTED_WOTeam"];
 
         <?php
         $usid = $_SESSION["user_id"];
-        $sql = "SELECT * FROM `wo_raisingillustration` WHERE `WO_ID` = '$WO_ID' AND (`IID` = '$usid' OR RID = '$usid')";
+        $sql = "SELECT * FROM `wo_raisingillustration` WHERE `WO_ID` = '$WO_ID'";
         $result = mysqli_query($conn, $sql);
         while ($row = mysqli_fetch_array($result))
         { ?>

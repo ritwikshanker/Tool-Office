@@ -62,9 +62,14 @@ $_SESSION["SELECTED_IO_ID"] = $_GET["az"];
                 </li>
             </ul>
         </li>
-        <li><a data-toggle="tab" href="#" onclick="ShowVandVIOFields(this.value);" value="">V & V</a></li>
-
         <?php
+        }
+        if ($_SESSION["AccessValue"] === '5' or $_SESSION["AccessValue"] === '0' or $_SESSION["AccessValue"] === '1' or $_SESSION["AccessValue"] === '6')
+        {
+            ?>
+            <li><a data-toggle="tab" href="#" onclick="ShowVandVIOFields(this.value);" value="">V & V</a></li>
+
+            <?php
         }
         ?>
     </ul>

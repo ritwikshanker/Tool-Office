@@ -42,7 +42,6 @@ $WO_ID = $_SESSION['SELECTED_WO_ID'];
                 <th> Score</th>
                 <th> StartDate</th>
                 <th> Completion Date</th>
-                <th> ID</th>
                 <th style="width:60px;">Info</th>
             </tr>
             <tr>
@@ -58,8 +57,8 @@ $WO_ID = $_SESSION['SELECTED_WO_ID'];
                 <td><?php echo $row["reviewScore"]; ?></td>
                 <td><?php echo $row["reviewStartDate"]; ?></td>
                 <td><?php echo $row["reviewCompleteDate"]; ?></td>
-                <td><?php echo $row["ID"]; ?></td>
-                <td><input type="radio" name="DisplayQASubmitReviewButtons" id="QACalculateReviewID" value="<?php echo $row["ID"]; ?>" required></td>
+                <td><input type="radio" name="DisplayQASubmitReviewButtons" id="QACalculateReviewID"
+                           value="<?php echo $row["ID"]; ?>" required></td>
             </tr>
             <?php
             }

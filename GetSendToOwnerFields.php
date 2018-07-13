@@ -22,7 +22,7 @@
         <br>
         <input type="date" id="STOdatepicker" name="Date">
         <br><br>
-        <input style="margin-left:25%;" type="submit" name="SendToOwner" value="Send To Owner">
+        <input style="margin-left:25%;" type="submit" name="SendToAuthor" value="Send To Author">
     </div>
 </form>
 <br><br>

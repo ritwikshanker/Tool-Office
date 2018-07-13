@@ -30,7 +30,7 @@ $IO_ID = $_SESSION["SELECTED_IO_ID"];
 
 <form action="" method="POST" id="PostAddIlluRemarks" role="form">
     <div class="container-fluid" style="margin-top:5%;margin-left:21%;" align="centre">
-        <label>Remarks for the WO : </label>
+        <label>Remarks for the IO : </label>
         <br>
         <?php
         $sql = "SELECT `IlluRemarks` FROM `wo_raisingillustration` WHERE `IO_ID` = '$IO_ID'";

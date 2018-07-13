@@ -888,7 +888,6 @@ if (isset($_POST["EditErrorCode"]))
         $EditErrorCodeDB = $_POST["EditErrorCode"];
         $EditErrorDescriptionDB = $_POST["EditErrorDescription"];
         $EditQuantityDB = $_POST["EditQuantity"];
-        session_start();
         $Selected_ReviewID = $_SESSION['Selected_ReviewID'];
         $update = "UPDATE `wo_errorinfo` SET 
                                         `Error_Code` = '$EditErrorCodeDB',
@@ -952,7 +951,7 @@ if (isset($_POST["DeleteErrorID"]))
         $PRID = $row["PRID"];
         $IRID = $row["IRID"];
     }
-    if ($PRID != $empid and $IRID != $empid or ($_SESSION["WOWIP"] != 1))
+    if ($PRID != $empid and $IRID != $empid)
     {
         echo 'You can not edit review to this order';
     }
